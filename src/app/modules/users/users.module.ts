@@ -2,9 +2,13 @@ import { NgModule } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 //import { RoomBookingComponent } from './components/room-booking/room-booking.component';
 
+=======
+//import { RoomBookingComponent } from './components/room-booking/room-booking.component';
+>>>>>>> c2bfde499fc95ffe6af4a31956e3561060226c42
 =======
 //import { RoomBookingComponent } from './components/room-booking/room-booking.component';
 >>>>>>> c2bfde499fc95ffe6af4a31956e3561060226c42
@@ -23,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
   declarations: [
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     LoginComponent,
     RegisterComponent,
@@ -33,9 +38,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CompareDirective
  
 >>>>>>> c2bfde499fc95ffe6af4a31956e3561060226c42
+=======
+    LoginComponent,
+    RegisterComponent,
+    CompareDirective
+ 
+>>>>>>> c2bfde499fc95ffe6af4a31956e3561060226c42
   ],
 
   imports: [
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     CommonModule,
@@ -49,6 +61,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
    RegisterComponent,
 =======
+=======
+>>>>>>> c2bfde499fc95ffe6af4a31956e3561060226c42
     CommonModule,
     FormsModule,
     ReactiveFormsModule
@@ -57,6 +71,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     CompareDirective
+<<<<<<< HEAD
+>>>>>>> c2bfde499fc95ffe6af4a31956e3561060226c42
+=======
 >>>>>>> c2bfde499fc95ffe6af4a31956e3561060226c42
 
   ]
