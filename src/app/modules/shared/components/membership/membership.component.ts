@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { UserService } from 'src/app/modules/users/services/user.service';
 
 @Component({
   selector: 'membership',
@@ -7,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MembershipComponent implements OnInit {
 
-  constructor() { }
+ 
+  ngOnInit(): void{}
 
-  ngOnInit(): void {
-  }
 
 }

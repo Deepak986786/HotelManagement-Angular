@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ComponentsComponent } from './components/components.component';
+
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UsersComponent } from './users/users.component';
@@ -11,7 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
-    ComponentsComponent,
+   
     HeaderComponent,
     FooterComponent,
     UsersComponent,
