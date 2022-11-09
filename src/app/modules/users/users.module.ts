@@ -13,7 +13,7 @@ import { CompareDirective } from '../shared/directives/compare.directive';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    CompareDirective
+    //CompareDirective
  
   ],
   imports: [
@@ -24,7 +24,7 @@ import { CompareDirective } from '../shared/directives/compare.directive';
   exports:[
     LoginComponent,
     RegisterComponent,
-    CompareDirective
+   // CompareDirective
 
   ]
 })

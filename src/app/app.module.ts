@@ -13,7 +13,7 @@ import { CompareDirective } from './modules/shared/directives/compare.directive'
   declarations: [
     AppComponent,
     MembershipComponent,
-    CompareDirective,
+    //CompareDirective,
          ],
   imports: [
     BrowserModule,
