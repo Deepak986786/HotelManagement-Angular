@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MembershipComponent } from './components/membership/membership.component';
+import { MembershipComponent } from '../users/components/membership/membership.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
@@ -14,7 +14,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     AppRoutingModule
   ],
   exports:[
-MembershipComponent
+    MembershipComponent
   ]
 })
 export class SharedModule { }

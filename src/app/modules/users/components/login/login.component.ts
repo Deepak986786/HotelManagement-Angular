@@ -33,9 +33,9 @@ export class LoginComponent implements OnInit {
         (<Observable<LoggedInDetails>>(this.userService
         .login(this.loginInfo)))
         .subscribe({
-          next: (info:any)=>{ 
+          next: (info:LoggedInDetails)=>{ 
             console.log(info);
-            const user=info.email;
+            const user=info.user;
             console.log('user',user);
             this.status=`Welcome ${user.name}`;
             this.statusStyle='text-success';

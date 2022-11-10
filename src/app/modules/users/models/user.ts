@@ -14,8 +14,7 @@ export interface User extends LoginInfo
 //Created LoggedInDetails with user and token for authentication
 export interface LoggedInDetails
 {
-    name:string;
-    profileUrl:string;
+
     user:User;
     token:string;
 }
