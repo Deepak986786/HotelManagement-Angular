@@ -11,7 +11,7 @@ export interface User extends LoginInfo
     aadharId:string;
 }
 
-//Created LoggedInDetails with user and token for authentication
+// Created LoggedInDetails with user and token for authentication
 export interface LoggedInDetails
 {
 

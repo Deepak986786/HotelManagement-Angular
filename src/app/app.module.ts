@@ -11,24 +11,19 @@ import { HomeComponent } from './modules/core/components/home/home.component';
 
 import { HttpUserService } from './modules/users/services/http-user-service';
 import { UsersModule } from './modules/users/users.module';
-import { GalleryComponent } from './modules/booking/components/gallery/gallery.component';
 
 import { SharedModule } from './modules/shared/shared.module';
+import { BookingModule } from './modules/booking/booking.module';
+//import { HttpBookingService } from './modules/booking/services/http-booking-service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
     HeaderComponent,
     FooterComponent,
-    HomeComponent,
-    
-    GalleryComponent,
-
-   
-    HeaderComponent
-
+    HomeComponent, 
+    HeaderComponent,
     //CompareDirective,
 
          ],
@@ -37,10 +32,13 @@ import { SharedModule } from './modules/shared/shared.module';
     AppRoutingModule,
 
     UsersModule,
-    SharedModule
+    SharedModule,
+    BookingModule,
+    
   ],
   providers: [
-    {provide:"UserService",useClass:HttpUserService}
+    {provide:"UserService",useClass:HttpUserService},
+   // {provide:"BookingService",useClass:HttpBookingService}
 
   ],
   bootstrap: [AppComponent]

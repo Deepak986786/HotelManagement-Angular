@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RoomBookingComponent } from './components/room-booking/room-booking.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
+import { UsersModule } from '../users/users.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -11,10 +13,13 @@ import { GalleryComponent } from './components/gallery/gallery.component';
     GalleryComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    UsersModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
-    GalleryComponent
+   GalleryComponent
   ]
 })
 export class BookingModule { }
