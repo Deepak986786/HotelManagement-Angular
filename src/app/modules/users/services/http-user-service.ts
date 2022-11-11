@@ -22,6 +22,7 @@ export class HttpUserService implements UserService{
         }
     }
     
+    
     getLoggedInUser(): LoggedInDetails|undefined {
         return this.loggedInUser;
     }

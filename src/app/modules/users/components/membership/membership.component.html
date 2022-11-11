@@ -1,7 +1,7 @@
 <ul class="navbar-nav mb-2 mb-lg-0 ">            
     <li class="nav-item dropdown">
       <a  class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img [src]="user.profilePicture" *ngIf="user" [title]="user.name" [alt]="user.name" />
+          <img [src]="user.profilePic" *ngIf="user" [title]="user.name" [alt]="user.name" />
           <i class="fa-solid fa-user" *ngIf="!user"></i>{{user?user.name:'Guest'}}
       </a>
       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

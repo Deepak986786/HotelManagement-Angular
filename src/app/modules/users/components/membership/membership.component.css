@@ -2,3 +2,9 @@
     padding-right: 50px;
 }
 
+img{
+    width:40px;
+    border-radius: 50%;
+    border:1px solid black;
+    padding:1px;
+}

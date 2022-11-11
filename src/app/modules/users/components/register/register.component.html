@@ -85,7 +85,7 @@
                     <i class="fa-solid fa-image"></i>
                 </span>
                 <input type="url" class="form-control" placeholder="enter your profile photo url" aria-label="profilePic"                     
-                    url #profileImage
+                    url #profileUrl
                     formControlName="profileUrl"
                     />
             </div>
@@ -130,7 +130,7 @@
     <!-- Displaying the profile image -->
 
     <div class="col-md-2">
-        <img src="{{profileImage.value}}"/>
+        <img src="{{profileUrl.value}}"/>
     </div>
 
     <div class="col-md-3">    
