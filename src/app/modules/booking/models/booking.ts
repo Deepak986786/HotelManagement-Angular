@@ -1,4 +1,12 @@
 export interface BookingDetails{
-    userEmail:string;
-    numberOfDays:number;
+    userId:string;
+    numberOfDaysStay:number;
+}
+
+export interface Booking{
+    bookingId:string;
+    roomNo:string;
+    price:string;
+    dateOfBooking:string;
+    noOfDaysOfStays:number;
 }

@@ -10,6 +10,7 @@ import { RoomBookingComponent } from './modules/booking/components/room-booking/
 import { HomeComponent } from './modules/core/components/home/home.component';
 import { LoginComponent } from './modules/users/components/login/login.component';
 import { RegisterComponent } from './modules/users/components/register/register.component';
+import { UserProfileComponent } from './modules/users/components/user-profile/user-profile.component';
 
 const routes: Routes = [
   {path:"user/register",component:RegisterComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path:"booking/gallery",component:GalleryComponent},
 
   {path:'home',component:HomeComponent},
-  //{path:'booking',component:RoomBookingComponent}
+  {path:'booking',component:RoomBookingComponent},
+  {path:'user/profile/:id',component:UserProfileComponent}
 
  
 ]

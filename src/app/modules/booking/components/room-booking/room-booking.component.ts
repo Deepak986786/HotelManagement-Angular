@@ -1,9 +1,12 @@
 import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LoggedInDetails, LoginInfo, User } from 'src/app/modules/users/models/user';
 import { UserService } from 'src/app/modules/users/services/user.service';
 import { BookingDetails } from '../../models/booking';
+import { BookingService } from '../../services/booking.service';
+
 
 @Component({
   selector: 'room-booking',
@@ -13,10 +16,16 @@ import { BookingDetails } from '../../models/booking';
 export class RoomBookingComponent implements OnInit,OnDestroy {
 
   constructor(@Inject("UserService") private userService: UserService,
+  @Inject("BookingService") private bookingService: BookingService,
   private router: Router) { }
  
   user?:any;
-  booking?:BookingDetails;
+
+  booking:BookingDetails={
+    userId:'deepak@gmail.com',
+    numberOfDaysStay:1
+  };
+
   updateUserStatus(details:any): void {
     
     if(details)
@@ -33,11 +42,20 @@ export class RoomBookingComponent implements OnInit,OnDestroy {
         this.user=details.user;
       this
         .userService
-        .getUserStatusAnnouncement()
+        .getUserStatusAnnouncement()  
         .subscribe(details=>this.updateUserStatus(details))      
   }
   ngOnDestroy(): void {
     this.userService.getUserStatusAnnouncement().unsubscribe();
+  }
+
+  bookRoom(){
+    console.log("room booked");
+    console.log(this.booking);
+
+    this.bookingService.addBooking(this.booking).subscribe(x=>console.log(x));
+    
+    
   }
   
 }

@@ -1,0 +1,45 @@
+
+<div class="row" >
+    <div class="col col-6">
+        <img [src]="user!.profilePic" />
+    </div>
+    <div class="col col-6">
+         <h3>{{user!.name}}</h3>
+         <h3>{{user!.email}}</h3>
+         <h3>{{user!.phoneNumber}}</h3>
+    </div>
+</div>
+
+<hr>
+<div class="row text-center">
+      <h3>My Bookings </h3>
+      <hr>
+
+
+      <div class="table-responsive">
+        <table class="table table-primary">
+            <thead>
+                <tr>
+                    <th scope="col">Booking ID </th>
+                    <th scope="col">Column 2</th>
+                    <th scope="col">Column 3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="">
+                    <td scope="row">{{user!.userBookings.bookingId}}</td>
+                    <td>R1C2</td>
+                    <td>R1C3</td>
+                </tr>
+                <tr class="">
+                    <td scope="row">Item</td>
+                    <td>Item</td>
+                    <td>Item</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+      
+
+
+</div>

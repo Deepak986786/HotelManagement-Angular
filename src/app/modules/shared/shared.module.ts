@@ -7,14 +7,12 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 
 @NgModule({
   declarations: [
-    MembershipComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule
   ],
   exports:[
-    MembershipComponent
   ]
 })
 export class SharedModule { }

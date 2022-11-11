@@ -14,31 +14,26 @@ import { UsersModule } from './modules/users/users.module';
 
 import { SharedModule } from './modules/shared/shared.module';
 import { BookingModule } from './modules/booking/booking.module';
-//import { HttpBookingService } from './modules/booking/services/http-booking-service';
+import { CoreModule } from './modules/core/core.module';
+import { HttpBookingService } from './modules/booking/services/http-booking-service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent, 
-    HeaderComponent,
-    //CompareDirective,
 
          ],
+         
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CoreModule
 
-    UsersModule,
-    SharedModule,
-    BookingModule,
     
   ],
   providers: [
     {provide:"UserService",useClass:HttpUserService},
-   // {provide:"BookingService",useClass:HttpBookingService}
+    {provide:"BookingService",useClass:HttpBookingService}
 
   ],
   bootstrap: [AppComponent]

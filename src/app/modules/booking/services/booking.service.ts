@@ -1,15 +1,16 @@
-// import { Observable } from "rxjs";
+import { Observable } from "rxjs";
+import { Booking, BookingDetails } from "../models/booking";
 
 
-// export interface BookingService
-// {
-//     getAllBookings(): Observable<Booking[]>;
+export interface BookingService
+{
+    getAllBookings(): Observable<Booking[]>;
 
-//     getBookingById(id: number): Observable<Booking>;
+    getBookingById(id: number): Observable<Booking>;
 
-//     addBooking(booking: Booking): Observable<Booking>;
+    addBooking(booking: BookingDetails): Observable<Booking>;
 
-//     cancelBooking(id: number): Observable<void>;
+    cancelBooking(id: number): Observable<void>;
 
-//     updateBooking(id:number): Observable<Booking>;
-// }
+    updateBooking(booking:BookingDetails,id:number): Observable<Booking>;
+}
