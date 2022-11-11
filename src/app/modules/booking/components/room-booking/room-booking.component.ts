@@ -22,7 +22,7 @@ export class RoomBookingComponent implements OnInit,OnDestroy {
   user?:any;
 
   booking:BookingDetails={
-    userId:'deepak@gmail.com',
+    userId:this.user.email,
     numberOfDaysStay:1
   };
 
