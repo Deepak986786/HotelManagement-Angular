@@ -18,7 +18,6 @@ const routes: Routes = [
   {path:'booking',component:RoomBookingComponent, canActivate:[AuthGuard]},
   {path:'user/profile/:id',component:UserProfileComponent}
 
- 
 ]
 
 
