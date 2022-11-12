@@ -10,11 +10,17 @@ export interface UserService
 
     isEmailRegistered(email:string):Observable<boolean>|Promise<boolean>;
 
-    logOut():Observable<void>|Promise<void>;
+    getUserStatusAnnouncement():Subject<LoggedInDetails|undefined>;
+
+    logOut():Observable<void>;
     
     getAuthenticationHeader():any;
 
     getLoggedInUser():LoggedInDetails|undefined;
+
+    getUserByEmail(email:string):Observable<User>;
+
+    getAuthStatus():boolean;
 
     
 }
