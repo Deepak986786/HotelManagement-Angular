@@ -16,6 +16,8 @@ import { SharedModule } from './modules/shared/shared.module';
 import { BookingModule } from './modules/booking/booking.module';
 import { CoreModule } from './modules/core/core.module';
 import { HttpBookingService } from './modules/booking/services/http-booking-service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './modules/core/interceptors/interceptor.service';
 
 
 @NgModule({
@@ -31,8 +33,8 @@ import { HttpBookingService } from './modules/booking/services/http-booking-serv
   ],
   providers: [
     {provide:"UserService",useClass:HttpUserService},
-    {provide:"BookingService",useClass:HttpBookingService}
-
+    {provide:"BookingService",useClass:HttpBookingService},
+    {provide: HTTP_INTERCEPTORS,useClass:InterceptorService,multi: true}
   ],
   bootstrap: [AppComponent]
 })

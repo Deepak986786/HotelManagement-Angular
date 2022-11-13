@@ -9,8 +9,9 @@ import { UserService } from '../../users/services/user.service';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(@Inject("UserService")private userService:UserService,
-     private router:Router)
+  constructor( @Inject("UserService")private userService:UserService,
+     private router:Router,
+    )
   {
 
   }
@@ -25,6 +26,8 @@ export class AuthGuard implements CanActivate {
     }
     this.router.navigate(['/user/login']);
     return false;
+
+  
   }
   
 

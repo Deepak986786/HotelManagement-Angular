@@ -99,10 +99,7 @@ export class HttpUserService implements UserService{
        return this.loggedInUserAnnouncement;
     }
 
-    getAuthStatus():boolean
-    {
-       return true;
-    }
+  
   
     logOut():Observable<void> {
         this.updateCurrentUser();

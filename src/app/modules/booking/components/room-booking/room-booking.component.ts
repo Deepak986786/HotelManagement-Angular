@@ -53,7 +53,7 @@ export class RoomBookingComponent implements OnInit,OnDestroy {
 
     console.log("room booked");
     console.log(this.booking);
-     this.booking.userId=this.user.email;
+    this.booking.userId=this.user.email;
     this.bookingService.addBooking(this.booking).subscribe(x=>console.log(x));
     
     

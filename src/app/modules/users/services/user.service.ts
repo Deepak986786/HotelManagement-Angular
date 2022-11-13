@@ -20,7 +20,6 @@ export interface UserService
 
     getUserByEmail(email:string):Observable<User>;
 
-    getAuthStatus():boolean;
 
     
 }

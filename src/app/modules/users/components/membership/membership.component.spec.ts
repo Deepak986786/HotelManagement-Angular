@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpUserService } from '../../services/http-user-service';
 
 import { MembershipComponent } from './membership.component';
 
@@ -8,7 +10,9 @@ describe('MembershipComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MembershipComponent ]
+      declarations: [ MembershipComponent ],
+      imports:[HttpClientModule],
+      providers:[{provide:"UserService",useClass:HttpUserService}]
     })
     .compileComponents();
 

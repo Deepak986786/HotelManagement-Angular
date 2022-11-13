@@ -41,17 +41,17 @@ export class HttpBookingService implements BookingService {
     addBooking(booking: BookingDetails): Observable<Booking> {
         return this
         .http
-        .post<Booking>(url,booking, this.options );
+        .post<Booking>(url,booking, this.options);
     }
     cancelBooking(id: number): Observable<void> {
         return this
         .http
-        .delete<void>(`${url}/${id}`,this.options);
+        .delete<void>(`${url}/${id}`);
     }
     updateBooking(booking: BookingDetails , bookingId:number): Observable<Booking> {
         return this
         .http
-        .put<Booking>(`${url}/${bookingId}`,booking,this.options);
+        .put<Booking>(`${url}/${bookingId}`,booking);
     }
 
 }
