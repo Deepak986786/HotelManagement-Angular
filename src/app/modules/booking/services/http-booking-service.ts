@@ -41,7 +41,7 @@ export class HttpBookingService implements BookingService {
     addBooking(booking: BookingDetails): Observable<Booking> {
         return this
         .http
-        .post<Booking>(url,booking, this.options);
+        .post<Booking>(url,booking);
     }
     cancelBooking(id: number): Observable<void> {
         return this

@@ -10,20 +10,31 @@ export class InterceptorService {
 
   token!: string;
     constructor(@Inject("UserService")private userService: UserService) { }
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
   
-      this.token = this.userService.getAuthenticationHeader();
+      console.log(request);
+
+      let headers = this.userService.getAuthenticationHeader();
+      let modifiedRequest = request.clone({
+        setHeaders:{
+          ...headers
+        }
+      })
+      
+      return next.handle(modifiedRequest);
+    }
+     
   
-      if (this.token) {
+    //   if (this.token) {
   
-        const tokenizedReq = req.clone(
-            { headers: req.headers.set('Authorization', 'Bearer ' + this.token) });
+    //     const tokenizedReq = req.clone(
+    //         { setHeaders:{...this.token}});
   
-        return next.handle(tokenizedReq);
+    //     return next.handle(tokenizedReq);
   
-      }
+    //   }
   
-      return next.handle(req);
+    //  // return next.handle(req);
   
     }
 }

@@ -10,7 +10,6 @@
   },
   "private": true,
   "dependencies": {
-
     "@angular/animations": "^14.0.0",
     "@angular/common": "^14.0.0",
     "@angular/compiler": "^14.0.0",
@@ -21,10 +20,10 @@
     "@angular/router": "^14.0.0",
     "@fortawesome/fontawesome-free": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
-
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.2",
     "jquery": "^3.6.1",
+    "ngx-logger": "^5.0.11",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
