@@ -9,13 +9,16 @@ export interface UserService
     register(user:User):Observable<User>|Promise<User>;
 
     isEmailRegistered(email:string):Observable<boolean>|Promise<boolean>;
+
     getUserStatusAnnouncement():Subject<LoggedInDetails|undefined>;
 
-    logOut():Observable<void>|Promise<void>;
+    logOut():Observable<void>;
     
     getAuthenticationHeader():any;
 
     getLoggedInUser():LoggedInDetails|undefined;
+
+    getUserByEmail(email:string):Observable<User>;
 
     
 }

@@ -5,7 +5,7 @@ import { LoggedInDetails, LoginInfo, User } from "../models/user";
 import { UserService } from "./user.service";
 
 
-const baseUrl='https://localhost:5000/api/users';
+const baseUrl='https://localhost:7066/api/users';
 
 @Injectable()
 export class HttpUserService implements UserService{
@@ -20,6 +20,9 @@ export class HttpUserService implements UserService{
                 this.updateCurrentUser(user);
             }
         }
+    }
+    getUserByEmail(email: string): Observable<User> {
+        return this.http.get<User>(baseUrl+'/'+email);
     }
     
     
@@ -44,6 +47,7 @@ export class HttpUserService implements UserService{
                 Authorization:`BEARER ${this.loggedInUser.token}`
             }
     }
+
     updateCurrentUser(user?:LoggedInDetails){
         this.loggedInUser=user;
         this.loggedInUserAnnouncement.next(user);
@@ -63,6 +67,8 @@ export class HttpUserService implements UserService{
                             this.updateCurrentUser(info);
                         })
                     );
+
+
 
     }
     
@@ -95,7 +101,7 @@ export class HttpUserService implements UserService{
     }
 
   
-    logOut(): Promise<void> | Observable<void> {
+    logOut():Observable<void> {
         this.updateCurrentUser();
         return of(undefined);
     }
