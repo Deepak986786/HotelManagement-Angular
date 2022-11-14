@@ -21,6 +21,9 @@ export class HttpUserService implements UserService{
             }
         }
     }
+    getUserByEmail(email: string): Observable<User> {
+        return this.http.get<User>(baseUrl+'/'+email);
+    }
     
     getLoggedInUser(): LoggedInDetails|undefined {
         return this.loggedInUser;

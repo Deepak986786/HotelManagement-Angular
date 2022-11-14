@@ -8,6 +8,7 @@ import { RoomBookingComponent } from './modules/booking/components/room-booking/
 
 
 import { HomeComponent } from './modules/core/components/home/home.component';
+import { AppGuardGuard } from './modules/guards/app-guard.guard';
 import { LoginComponent } from './modules/users/components/login/login.component';
 import { RegisterComponent } from './modules/users/components/register/register.component';
 import { UserProfileComponent } from './modules/users/components/user-profile/user-profile.component';
@@ -19,8 +20,8 @@ const routes: Routes = [
   {path:"booking/gallery",component:GalleryComponent},
 
   {path:'home',component:HomeComponent},
-  {path:'booking',component:RoomBookingComponent},
-  {path:'user/profile/:id',component:UserProfileComponent}
+  {path:'booking', canActivate:[AppGuardGuard],component:RoomBookingComponent},
+  {path:'user/profile/:id',canActivate:[AppGuardGuard],component:UserProfileComponent}
 
  
 ]

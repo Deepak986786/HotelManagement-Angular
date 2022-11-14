@@ -9,6 +9,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MembershipComponent } from './components/membership/membership.component';
 import { RouterModule } from '@angular/router';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -27,7 +28,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule ,
+    SharedModule
     
   ],
   exports:[

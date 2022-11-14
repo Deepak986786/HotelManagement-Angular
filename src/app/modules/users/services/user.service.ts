@@ -18,5 +18,7 @@ export interface UserService
 
     getLoggedInUser():LoggedInDetails|undefined;
 
+    getUserByEmail(email:string):Observable<User>;
+
     
 }

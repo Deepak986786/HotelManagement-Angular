@@ -4,22 +4,27 @@ import { RoomBookingComponent } from './components/room-booking/room-booking.com
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { UsersModule } from '../users/users.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
+  imports: [
+    CommonModule,
+    UsersModule,
+    ReactiveFormsModule,
+    RouterModule,
+    FormsModule
+  ],
   declarations: [
     RoomBookingComponent,
     GalleryComponent
   ],
-  imports: [
-    CommonModule,
-    UsersModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
   exports:[
-   GalleryComponent
+   GalleryComponent ,
+   RoomBookingComponent,
+   FormsModule,
+   ReactiveFormsModule
   ]
 })
 export class BookingModule { }

@@ -4,9 +4,10 @@ export interface BookingDetails{
 }
 
 export interface Booking{
-    bookingId:string;
-    roomNo:string;
+    id: number;
+    roomNo?:string;
     price:string;
-    dateOfBooking:string;
-    noOfDaysOfStays:number;
+    bookingDate:string;
+    numberOfDaysStay:number;
+    userId:string;
 }

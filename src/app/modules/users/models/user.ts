@@ -8,7 +8,7 @@ export interface User extends LoginInfo
     name:string;
     profilePic:string;
     phoneNumber:string;
-    aadharId:string;
+    aadhaarId:string;
     userBookings:any;
 }
 
