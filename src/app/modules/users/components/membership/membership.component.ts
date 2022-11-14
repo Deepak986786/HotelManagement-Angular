@@ -44,7 +44,7 @@ export class MembershipComponent implements OnInit {
   
   async handleLogout(){
     await this.userService.logOut();
-    this.router.navigate(['user/login'])
+  this.router.navigate(['user/login'])
   }
 
   

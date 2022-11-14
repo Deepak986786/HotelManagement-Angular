@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { Booking, BookingDetails } from 'src/app/modules/booking/models/booking';
 import { BookingService } from 'src/app/modules/booking/services/booking.service';
@@ -16,7 +16,8 @@ export class UserProfileComponent implements OnInit {
   constructor(
     @Inject("UserService") private userService: UserService,
     private activatedRoute: ActivatedRoute,
-    @Inject("BookingService") private bookingService: BookingService
+    @Inject("BookingService") private bookingService: BookingService,
+    private router: Router
   ) { }
 
   details?: LoggedInDetails;
@@ -80,7 +81,15 @@ export class UserProfileComponent implements OnInit {
     }
     
     if(confirmation == true){
-       this.bookingService.cancelBooking(this.bookingId).subscribe(()=>console.log("booking cancelled")
+       this.bookingService.cancelBooking(this.bookingId).subscribe(()=>{
+        console.log("booking cancelled")
+        this.userService.getUserByEmail(this.id).subscribe(user => {
+          this.user = user;
+          console.log(this.user);
+          this.userBookings=this.user.userBookings;
+        })
+      
+      }
        )
 
       //  this.userService.getUserByEmail(this.id).subscribe(user => {
@@ -88,6 +97,7 @@ export class UserProfileComponent implements OnInit {
       //   console.log(this.user);
       //   this.userBookings = user.userBookings;
       // })
+      //this.router.navigate(['/user/profile',this.user?.email])
     }
   }
 
@@ -103,6 +113,11 @@ export class UserProfileComponent implements OnInit {
 
         this.bookingService.updateBooking(this.updateBooking,this.bookingId).subscribe(x=>{
           console.log("booking updated" , x);
+          this.userService.getUserByEmail(this.id).subscribe(user => {
+            this.user = user;
+            console.log(this.user);
+            this.userBookings=this.user.userBookings;
+          })
         });
 
 

@@ -33,6 +33,7 @@
                     <td scope="row">{{bookings.numberOfDaysStay}}</td>
                     <td scope="row">{{bookings.bookingDate | date : 'longDate'}} </td>
                     <td scope="row">{{bookings.price | currency:'INR'}}</td>
+
                     <td scope="row">
                         <button class="btn btn-sm btn-danger bg-danger"
                             (click)="handleCancel(bookings.id)">cancel</button>  &nbsp;&nbsp;

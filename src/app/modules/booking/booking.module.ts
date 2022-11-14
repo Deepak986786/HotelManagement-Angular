@@ -9,19 +9,22 @@ import { RouterModule } from '@angular/router';
 
 
 @NgModule({
+  imports: [
+    CommonModule,
+    UsersModule,
+    ReactiveFormsModule,
+    RouterModule,
+    FormsModule
+  ],
   declarations: [
     RoomBookingComponent,
     GalleryComponent
   ],
-  imports: [
-    CommonModule,
-    UsersModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule
-  ],
   exports:[
-   GalleryComponent
+   GalleryComponent ,
+   RoomBookingComponent,
+   FormsModule,
+   ReactiveFormsModule
   ]
 })
 export class BookingModule { }

@@ -100,7 +100,6 @@ export class HttpUserService implements UserService{
     }
 
   
-  
     logOut():Observable<void> {
         this.updateCurrentUser();
         return of(undefined);
