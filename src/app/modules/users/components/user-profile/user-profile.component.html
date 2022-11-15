@@ -14,10 +14,22 @@
 <div class="row text-center">
     <h3>My Bookings </h3>
     <hr>
+    <div class="input-group mb-3 w-50 p-2 justify-center">
 
+        <input type="email" class="form-control" placeholder="search by date" 
+            name="search"  [(ngModel)]="search"
+            aria-describedby="basic-addon1" >
+
+        <span class="input-group-text" id="basic-addon1">
+
+            <i class="fa-solid fa-magnifying-glass"></i>Search
+
+        </span>
+
+    </div>
 
     <div class="table-responsive" *ngIf="user">
-        <table class="table table-primary" *ngFor="let bookings of userBookings">
+        <table class="table table-primary" *ngFor="let bookings of userBookings| search : search">
             <thead>
                 <tr>
                     <th scope="col">Booking ID </th>

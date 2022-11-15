@@ -23,6 +23,7 @@ export class UserProfileComponent implements OnInit {
   details?: LoggedInDetails;
   user?: User;
   id: string = '';
+  search='';
 
   // userBookings:Subject<Booking[]> = new Subject<Booking[]>();
   // userBookings:Observable<Booking[]> = new Observable<Booking[]>();

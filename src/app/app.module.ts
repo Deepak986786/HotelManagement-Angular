@@ -14,6 +14,7 @@ import {BookingModule } from './modules/booking/booking.module'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './token.interceptor';
 import { InterceptorService } from './modules/core/interceptors/interceptor.service';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 
 @NgModule({
@@ -23,7 +24,10 @@ import { InterceptorService } from './modules/core/interceptors/interceptor.serv
     CoreModule ,
     FormsModule,
     ReactiveFormsModule,
-    BookingModule
+    BookingModule,
+    LoggerModule.forRoot({
+      level:NgxLoggerLevel.INFO
+    })
     
   ],
   declarations: [
