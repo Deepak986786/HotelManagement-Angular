@@ -1,8 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpUserService } from '../../services/http-user-service';
+import { HttpUserService } from '../modules/users/services/http-user-service';
 
-import { MembershipComponent } from './membership.component';
+import { MembershipComponent } from '../modules/users/components/membership/membership.component';
 
 describe('MembershipComponent', () => {
   let component: MembershipComponent;

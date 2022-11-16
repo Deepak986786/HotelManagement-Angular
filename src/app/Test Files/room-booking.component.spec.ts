@@ -1,11 +1,12 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpUserService } from 'src/app/modules/users/services/http-user-service';
-import { Booking } from '../../models/booking';
-import { HttpBookingService } from '../../services/http-booking-service';
+import { Booking } from '../modules/booking/models/booking';
+import { HttpBookingService } from '../modules/booking/services/http-booking-service';
 
-import { RoomBookingComponent } from './room-booking.component';
+import { RoomBookingComponent } from '../modules/booking/components/room-booking/room-booking.component';
+
 
 describe('RoomBookingComponent', () => {
   let component: RoomBookingComponent;

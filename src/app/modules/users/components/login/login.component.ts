@@ -37,7 +37,9 @@ export class LoginComponent implements OnInit {
             console.log(info);
             const user=info.user;
             console.log('user',user);
+            console.log(this.status);
             this.status=`Welcome ${user.name}`;
+            console.log(this.status);
             this.statusStyle='text-success';
             this.router.navigate(['home']);
           },

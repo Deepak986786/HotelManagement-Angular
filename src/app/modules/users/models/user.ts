@@ -9,7 +9,7 @@ export interface User extends LoginInfo
     profilePic:string;
     phoneNumber:string;
     aadhaarId:string;
-    userBookings:any;
+    userBookings?:any;
 }
 
 // Created LoggedInDetails with user and token for authentication
