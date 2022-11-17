@@ -85,7 +85,7 @@
                     <i class="fa-solid fa-image"></i>
                 </span>
                 <input type="url" class="form-control" placeholder="enter your profile photo url" aria-label="profilePic"                     
-                    url #profileUrl
+                    url #profileImage
                     formControlName="profileUrl"
                     />
             </div>
@@ -104,7 +104,16 @@
                     formControlName="phoneNumber"
                     />
             </div>
-
+            <!-- Displaying validation errors of phone number-->
+            <p *ngIf="form.controls!['phoneNumber'].invalid && form.controls!['phoneNumber'].dirty" class="text-danger text-sm">
+                <span *ngIf="form.controls!['phoneNumber'].errors!['required']" >Required</span>
+                <span *ngIf="form.controls!['phoneNumber'].errors!['minlength']">
+                    Min {{form.controls!['phoneNumber'].errors!['minlength']!.requiredLength}} chars required. Current is {{form.controls!['phoneNumber'].errors!['minlength']!.actualLength}}
+                </span>
+                <span *ngIf="form.controls!['phoneNumber'].errors!['maxlength']">
+                    Max {{form.controls!['phoneNumber'].errors!['maxlength']!.requiredLength}} chars required. Current is {{form.controls!['phoneNumber'].errors!['maxlength']!.actualLength}}
+                </span>
+            </p>
              <!-- Aadhaar ID Input element -->
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">
@@ -114,7 +123,16 @@
                     formControlName="aadhaarId"
                     />
             </div>
-
+             <!-- Displaying validation errors of phone number-->
+             <p *ngIf="form.controls!['aadhaarId'].invalid && form.controls!['aadhaarId'].dirty" class="text-danger text-sm">
+                <span *ngIf="form.controls!['aadhaarId'].errors!['required']" >Required</span>
+                <span *ngIf="form.controls!['aadhaarId'].errors!['minlength']">
+                    Min {{form.controls!['aadhaarId'].errors!['minlength']!.requiredLength}} chars required. Current is {{form.controls!['aadhaarId'].errors!['minlength']!.actualLength}}
+                </span>
+                <span *ngIf="form.controls!['aadhaarId'].errors!['maxlength']">
+                    Max {{form.controls!['aadhaarId'].errors!['maxlength']!.requiredLength}} chars required. Current is {{form.controls!['aadhaarId'].errors!['maxlength']!.actualLength}}
+                </span>
+            </p>
             <!-- Register button  for submission-->
             <button type="submit" class="btn btn-primary"
                 >
@@ -130,7 +148,7 @@
     <!-- Displaying the profile image -->
 
     <div class="col-md-2">
-        <img src="{{profileUrl.value}}"/>
+        <img src="{{profileImage.value}}"/>
     </div>
 
     <div class="col-md-3">    

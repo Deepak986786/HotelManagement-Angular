@@ -5,7 +5,11 @@ import { LoggedInDetails, LoginInfo, User } from "../models/user";
 import { UserService } from "./user.service";
 
 
+<<<<<<< HEAD
 const baseUrl='https://localhost:7066/api/users';
+=======
+const baseUrl='https://localhost:5000/api/users';
+>>>>>>> eb978e3e5c9779c0df56e7aab661076e4eda9701
 
 @Injectable()
 export class HttpUserService implements UserService{
@@ -24,7 +28,6 @@ export class HttpUserService implements UserService{
     getUserByEmail(email: string): Observable<User> {
         return this.http.get<User>(baseUrl+'/'+email);
     }
-    
     
     getLoggedInUser(): LoggedInDetails|undefined {
         return this.loggedInUser;

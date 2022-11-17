@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BookingModule } from './modules/booking/booking.module'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './token.interceptor';
+import { InterceptorService } from './modules/core/interceptors/interceptor.service';
 
 
 @NgModule({
@@ -32,8 +33,9 @@ import { TokenInterceptor } from './token.interceptor';
          
   providers: [
     {provide:"UserService",useClass:HttpUserService},
-    {provide:"BookingService",useClass:HttpBookingService} ,
-    {provide: HTTP_INTERCEPTORS , useClass:TokenInterceptor ,multi:true}
+
+    {provide:"BookingService",useClass:HttpBookingService},
+    {provide: HTTP_INTERCEPTORS,useClass:InterceptorService,multi: true}
 
   ],
   bootstrap: [AppComponent]

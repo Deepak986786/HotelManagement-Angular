@@ -31,13 +31,8 @@ export class MembershipComponent implements OnInit {
       this
         .userService
         .getUserStatusAnnouncement()
-<<<<<<< HEAD
         .subscribe(details=>this.updateUserStatus(details))
-      console.log("Membership user",this.user);
-      
-=======
-        .subscribe(details=>this.updateUserStatus(details))      
->>>>>>> a9f22bb091d9ef54c827d0cc7ce61e596cefad54
+        console.log("Membership user",this.user);
   }
 
 

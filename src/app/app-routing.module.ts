@@ -3,10 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { GalleryComponent } from './modules/booking/components/gallery/gallery.component';
 import { RoomBookingComponent } from './modules/booking/components/room-booking/room-booking.component';
 
-
-
-
-
 import { HomeComponent } from './modules/core/components/home/home.component';
 import { AppGuardGuard } from './modules/guards/app-guard.guard';
 import { LoginComponent } from './modules/users/components/login/login.component';
@@ -23,12 +19,10 @@ const routes: Routes = [
   {path:'booking', canActivate:[AppGuardGuard],component:RoomBookingComponent},
   {path:'user/profile/:id',canActivate:[AppGuardGuard],component:UserProfileComponent}
 
- 
 ]
-
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers:[AppGuardGuard]
 })
 export class AppRoutingModule { }

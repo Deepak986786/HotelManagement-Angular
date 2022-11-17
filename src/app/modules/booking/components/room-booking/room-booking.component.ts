@@ -18,7 +18,6 @@ export class RoomBookingComponent implements OnInit, OnDestroy {
     @Inject('UserService') private userService: UserService,
     @Inject('BookingService') private bookingService: BookingService,
     private router: Router,
-    private fb: FormBuilder
   ) {
     //  this.bookingform = this.fb.group({
     //     userId:['',Validators.required],

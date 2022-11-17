@@ -1,12 +1,17 @@
+import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { HttpUserService } from './modules/users/services/http-user-service';
 
 import { TokenInterceptor } from './token.interceptor';
 
 describe('TokenInterceptor', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
-      TokenInterceptor
-      ]
+      TokenInterceptor,
+      {provide:"UserService",useClass:HttpUserService}
+      ],
+      
+      imports:[HttpClientModule]
   }));
 
   it('should be created', () => {

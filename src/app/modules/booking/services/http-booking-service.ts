@@ -5,7 +5,7 @@ import { UserService } from "../../users/services/user.service";
 import { Booking, BookingDetails } from "../models/booking";
 import { BookingService } from "./booking.service";
 
-const url = "https://localhost:7066/api/bookings";
+const url = "https://localhost:5000/api/bookings";
 
 @Injectable({
     providedIn:"root"    
@@ -16,11 +16,7 @@ export class HttpBookingService implements BookingService {
         @Inject("UserService") private userService: UserService,
     ){  }
    
-    
-   
-
-
-    
+        
     getAllBookings(): Observable<Booking[]> {
        
         return this.http.get<Booking[]>(url);
