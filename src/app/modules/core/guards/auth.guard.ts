@@ -19,14 +19,24 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
   
-    var user = this.userService.getLoggedInUser();
-    if(user)
-    {
-      return true;
-    }
-    window.alert('Please login first');
-    this.router.navigate(['/user/login']);
-    return false;
+    // var user = this.userService.getLoggedInUser();
+    // if(user)
+    // {
+    //   return true;
+    // }
+    // window.alert('Please login first');
+    // this.router.navigate(['/user/login']);
+    // return false;
+    console.log("guard activated");
+
+      if(this.userService.getLoggedInUser()){
+        return true;
+      }else{
+        alert("you need to login first");
+        this.router.navigate(['/user/login']);
+
+        return false;
+      }
 
   
   }

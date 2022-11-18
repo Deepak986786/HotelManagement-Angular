@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { NGXLogger } from 'ngx-logger';
 import { Observable } from 'rxjs';
 import { UserService } from '../users/services/user.service';
 
@@ -9,7 +10,7 @@ import { UserService } from '../users/services/user.service';
 export class AppGuardGuard implements CanActivate {
 
   constructor(@Inject("UserService") private userService : UserService,
-  private router:Router){}
+  private router:Router,private logger:NGXLogger){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -21,6 +22,7 @@ export class AppGuardGuard implements CanActivate {
         return true;
       }else{
         alert("you need to login first");
+        this.logger.warn('User trying to book without logging in and redirecting to login page');
         this.router.navigate(['/user/login']);
 
         return false;

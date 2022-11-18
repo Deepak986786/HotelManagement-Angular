@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NGXLogger } from 'ngx-logger';
 import { Observable, Subject } from 'rxjs';
 import { Booking, BookingDetails } from 'src/app/modules/booking/models/booking';
 import { BookingService } from 'src/app/modules/booking/services/booking.service';
@@ -17,19 +18,16 @@ export class UserProfileComponent implements OnInit {
     @Inject("UserService") private userService: UserService,
     private activatedRoute: ActivatedRoute,
     @Inject("BookingService") private bookingService: BookingService,
-    private router: Router
+    private router: Router, private logger:NGXLogger
   ) { }
 
   details?: LoggedInDetails;
   user?: User;
   id: string = '';
   search='';
-
   // userBookings:Subject<Booking[]> = new Subject<Booking[]>();
   // userBookings:Observable<Booking[]> = new Observable<Booking[]>();
   userBookings?:Booking[];
-
-
   ngOnInit(): void {
 
     this.activatedRoute.params.subscribe(params => {
@@ -38,16 +36,11 @@ export class UserProfileComponent implements OnInit {
 
     // this.details = this.userService.getLoggedInUser();
     // this.user = this.details?.user;
-
-    
-
     this.userService.getUserByEmail(this.id).subscribe(user => {
       this.user = user;
-      console.log(this.user);
+      this.logger.info(user);
       this.userBookings=this.user.userBookings;
     })
-
-
   }
 
   visible: boolean = false;
@@ -92,13 +85,6 @@ export class UserProfileComponent implements OnInit {
       
       }
        )
-
-      //  this.userService.getUserByEmail(this.id).subscribe(user => {
-      //   this.user = user;
-      //   console.log(this.user);
-      //   this.userBookings = user.userBookings;
-      // })
-      //this.router.navigate(['/user/profile',this.user?.email])
     }
   }
 

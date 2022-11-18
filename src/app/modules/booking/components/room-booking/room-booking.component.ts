@@ -1,6 +1,7 @@
 import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NGXLogger } from 'ngx-logger';
 
 import { UserService } from 'src/app/modules/users/services/user.service';
 import { BookingDetails } from '../../models/booking';
@@ -12,18 +13,15 @@ import { BookingService } from '../../services/booking.service';
   styleUrls: ['./room-booking.component.css'],
 })
 export class RoomBookingComponent implements OnInit, OnDestroy {
-  // bookingform:FormGroup;
 
   constructor(
     @Inject('UserService') private userService: UserService,
     @Inject('BookingService') private bookingService: BookingService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private logger:NGXLogger
   ) {
-    //  this.bookingform = this.fb.group({
-    //     userId:['',Validators.required],
-    //     numberOfDaysStay:['',Validators.required]
-    //  })
+    
   }
 
   user?: any;
@@ -48,19 +46,18 @@ export class RoomBookingComponent implements OnInit, OnDestroy {
       .subscribe((details) => this.updateUserStatus(details));
   }
   ngOnDestroy(): void {
-    // this.userService.getUserStatusAnnouncement().unsubscribe();
     this.subsciption.unsubscribe();
   }
 
   bookRoom() {
-    //console.log(this.bookingform.value);
-
-    console.log('room booked');
+    this.logger.info("Entering into bookRoom method");
     console.log(this.booking);
     this.booking.userId = this.user.email;
     this.bookingService
       .addBooking(this.booking)
       .subscribe((x) => console.log(x));
+    this.logger.trace("Booking completed and user redirected to my bookings page");  
+    this.router.navigate(['user/profile',this.user.email]);
   }
 
 }

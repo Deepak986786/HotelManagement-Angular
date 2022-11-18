@@ -16,11 +16,6 @@ export class HttpBookingService implements BookingService {
         @Inject("UserService") private userService: UserService,
     ){  }
    
-    
-   
-
-
-    
     getAllBookings(): Observable<Booking[]> {
        
         return this.http.get<Booking[]>(url);

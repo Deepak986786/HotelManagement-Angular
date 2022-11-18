@@ -26,18 +26,17 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
     ReactiveFormsModule,
     BookingModule,
     LoggerModule.forRoot({
-      level:NgxLoggerLevel.INFO
+      level:NgxLoggerLevel.TRACE,
+      disableConsoleLogging:false
     })
     
   ],
   declarations: [
     AppComponent,
-
-         ],
+],
          
   providers: [
     {provide:"UserService",useClass:HttpUserService},
-
     {provide:"BookingService",useClass:HttpBookingService},
     {provide: HTTP_INTERCEPTORS,useClass:InterceptorService,multi: true}
 

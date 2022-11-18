@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerModule } from 'ngx-logger';
+import { LoggerModule, NGXLogger } from 'ngx-logger';
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
@@ -7,7 +7,9 @@ import { LoggerModule } from 'ngx-logger';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private logger:LoggerModule) { }
+  constructor(private logger:NGXLogger) { 
+    this.logger.info("Home component created")
+  }
 
   ngOnInit(): void {
  

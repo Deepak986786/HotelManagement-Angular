@@ -20,4 +20,10 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have title as Awesome hotel',()=>{
+    const fixture = TestBed.createComponent(HeaderComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('HotelManagement-Client');
+  });
 });
