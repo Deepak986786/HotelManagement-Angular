@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { LoggerTestingModule } from 'ngx-logger/testing';
+import { FooterComponent } from '../footer/footer.component';
+import { HeaderComponent } from '../header/header.component';
 
 import { HomeComponent } from './home.component';
 
@@ -8,7 +11,8 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [ HomeComponent ],
+      imports:[LoggerTestingModule]
     })
     .compileComponents();
 
@@ -20,4 +24,9 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should contain header, footer',()=>{
+    expect(HeaderComponent).toBeTruthy();
+    expect(FooterComponent).toBeTruthy();
+  })
 });

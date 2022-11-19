@@ -6,7 +6,7 @@ import { RoomBookingComponent } from './modules/booking/components/room-booking/
 
 import { HomeComponent } from './modules/core/components/home/home.component';
 import { AuthGuard } from './modules/core/guards/auth.guard';
-import { AppGuardGuard } from './modules/guards/app-guard.guard';
+
 import { LoginComponent } from './modules/users/components/login/login.component';
 import { RegisterComponent } from './modules/users/components/register/register.component';
 import { UserProfileComponent } from './modules/users/components/user-profile/user-profile.component';
@@ -25,6 +25,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers:[AppGuardGuard]
+  providers:[AuthGuard]
 })
 export class AppRoutingModule { }

@@ -2,6 +2,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { LoggerTestingModule } from 'ngx-logger/testing';
+import { dummybookings } from 'server-data/db-data';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HttpBookingService } from 'src/app/modules/booking/services/http-booking-service';
 import { HttpUserService } from '../../services/http-user-service';
@@ -18,7 +20,7 @@ describe('UserProfileComponent', () => {
       imports:[HttpClientModule,
         RouterModule,
       AppRoutingModule,
-    FormsModule],
+    FormsModule,LoggerTestingModule],
         providers:[{provide:"UserService",useClass:HttpUserService},
         {provide:"BookingService",useClass:HttpBookingService}]
     })
@@ -31,5 +33,23 @@ describe('UserProfileComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should check the title',()=>{
+    
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h3').textContent).toEqual("My Bookings");
+  });
+
+  it('should popup while clicking button',()=>{
+    component.handleClick(false);
+    expect(component.visible).toBeFalse();
+    fixture.detectChanges();
+  });
+  
+  it('should close when cancel is cliked',()=>{
+    component.handleClick(true);
+    expect(component.visible).toBeFalse();
+    fixture.detectChanges();
   });
 });

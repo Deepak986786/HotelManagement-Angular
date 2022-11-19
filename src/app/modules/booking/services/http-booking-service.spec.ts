@@ -1,14 +1,13 @@
 import { HttpClientModule } from "@angular/common/http";
+import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
 import { TestBed } from "@angular/core/testing";
+import { LoggerTestingModule } from "ngx-logger/testing";
 import { dummybookings, dummybookingsmock } from "server-data/db-data";
-import { BookingModule } from "../modules/booking/booking.module";
-import { BookingService } from "../modules/booking/services/booking.service"
-import { HttpBookingService } from "../modules/booking/services/http-booking-service"
-import {HttpErrorResponse} from '@angular/common/http';
-import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import { HttpUserService } from "../modules/users/services/http-user-service";
-import { UserService } from "../modules/users/services/user.service";
-import { Booking } from "../modules/booking/models/booking";
+import { HttpUserService } from "../../users/services/http-user-service";
+import { BookingModule } from "../booking.module";
+import { Booking } from "../models/booking";
+import { BookingService } from "./booking.service";
+import { HttpBookingService } from "./http-booking-service";
 
 const Url='https://localhost:5000/api/bookings';
 describe('BookingService',()=>{
@@ -18,7 +17,7 @@ describe('BookingService',()=>{
     let service:BookingService;
     beforeEach(()=>{
         TestBed.configureTestingModule({
-            imports:[BookingModule, HttpClientTestingModule],
+            imports:[BookingModule, HttpClientTestingModule,LoggerTestingModule],
             providers:[{provide:"BookingService",useClass:HttpBookingService},
         {provide:"UserService",useClass:HttpUserService}]
         });

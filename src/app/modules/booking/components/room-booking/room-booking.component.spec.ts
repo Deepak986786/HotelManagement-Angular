@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoggerTestingModule } from 'ngx-logger/testing';
 import { HttpUserService } from 'src/app/modules/users/services/http-user-service';
 import { HttpBookingService } from '../../services/http-booking-service';
 
@@ -13,7 +14,7 @@ describe('RoomBookingComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ RoomBookingComponent ],
-      imports:[HttpClientModule,FormsModule],
+      imports:[HttpClientModule,FormsModule,ReactiveFormsModule, LoggerTestingModule],
       providers:[{provide:"BookingService",useClass:HttpBookingService},
       {provide:"UserService",useClass:HttpUserService}]
     })
@@ -26,5 +27,10 @@ describe('RoomBookingComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should update user status',()=>{
+    component.updateUserStatus(true);
+    expect(component.updateUserStatus).toBeTruthy();
   });
 });

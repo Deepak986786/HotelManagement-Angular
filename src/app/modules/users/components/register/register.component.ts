@@ -2,6 +2,7 @@ import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NGXLogger } from 'ngx-logger';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { compare } from 'src/app/modules/shared/directives/compare.directive';
@@ -26,7 +27,7 @@ export class RegisterComponent implements OnInit {
   */
   constructor(private builder :FormBuilder,
              @Inject("UserService") private userService:UserService,
-              private router:Router
+              private router:Router, private logger:NGXLogger
               ) {
 
     // Declaring password, phone number and aadhaar id validators
@@ -83,6 +84,7 @@ export class RegisterComponent implements OnInit {
     if(this.form.invalid)
       {
         console.log("Form is invalid");
+        this.logger.warn('Form is invalid');
         return;
       }
     

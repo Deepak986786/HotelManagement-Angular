@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { PopUpComponent } from './pop-up.component';
 
@@ -20,4 +20,18 @@ describe('PopUpComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should close when cancel is clicked',()=>{
+    component.handleCancel();
+    expect(component.visible).toBeFalse();
+    fixture.detectChanges();
+  });
+  
+  it('should display popup when button clicked', fakeAsync(()=>{
+    spyOn(component,'done');
+    let button = fixture.debugElement.nativeElement.querySelector('button');
+    button.click();
+    tick();
+    expect(component.done).toHaveBeenCalled();
+  }));
 });

@@ -4,11 +4,11 @@ import { LoggedInDetails, LoginInfo, User } from "../models/user";
 //Interface for User with essential methods
 export interface UserService
 {
-    login(loginInfo:LoginInfo):Observable<LoggedInDetails>|Promise<User>;
+    login(loginInfo:LoginInfo):Observable<LoggedInDetails>;
 
-    register(user:User):Observable<User>|Promise<User>;
+    register(user:User):Observable<User>;
 
-    isEmailRegistered(email:string):Observable<boolean>|Promise<boolean>;
+    isEmailRegistered(email:string):Observable<boolean>;
 
     getUserStatusAnnouncement():Subject<LoggedInDetails|undefined>;
 
