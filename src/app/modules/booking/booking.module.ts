@@ -22,9 +22,7 @@ import { RouterModule } from '@angular/router';
   ],
   exports:[
    GalleryComponent ,
-   RoomBookingComponent,
-   FormsModule,
-   ReactiveFormsModule
+   RoomBookingComponent
   ]
 })
 export class BookingModule { }

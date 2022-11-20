@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //localStorage.setItem("token",this.loggedInUser!.email);
+   
   }
 
 }

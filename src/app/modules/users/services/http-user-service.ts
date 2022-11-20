@@ -11,6 +11,8 @@ const baseUrl='https://localhost:5000/api/users';
 @Injectable()
 export class HttpUserService implements UserService{
 
+    loggedInUserAnnouncement = new Subject<LoggedInDetails|undefined>();
+    loggedInUser?:LoggedInDetails;
     constructor(private http:HttpClient, private logger:NGXLogger){
         if(!this.loggedInUser)
         {
@@ -38,8 +40,7 @@ export class HttpUserService implements UserService{
                     .get<User[]>(baseUrl);
     }
    
-    loggedInUserAnnouncement = new Subject<LoggedInDetails|undefined>();
-    loggedInUser?:LoggedInDetails;
+   
 
     getAuthenticationHeader()
     {

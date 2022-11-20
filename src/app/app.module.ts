@@ -8,9 +8,10 @@ import { HttpBookingService } from './modules/booking/services/http-booking-serv
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BookingModule } from './modules/booking/booking.module'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './token.interceptor';
 import { InterceptorService } from './modules/core/interceptors/interceptor.service';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { HttpCacheService } from './modules/core/services/http-cache.service';
+import { CacheInterceptor } from './modules/core/interceptors/cache-interceptor.service';
 @NgModule({
   imports: [
     BrowserModule,
@@ -32,7 +33,9 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
   providers: [
     {provide:"UserService",useClass:HttpUserService},
     {provide:"BookingService",useClass:HttpBookingService},
-    {provide: HTTP_INTERCEPTORS,useClass:InterceptorService,multi: true}
+    {provide: HTTP_INTERCEPTORS,useClass:InterceptorService,multi: true},
+    {provide:HTTP_INTERCEPTORS,useClass:CacheInterceptor,multi:true},
+    HttpCacheService
 
   ],
   bootstrap: [AppComponent]

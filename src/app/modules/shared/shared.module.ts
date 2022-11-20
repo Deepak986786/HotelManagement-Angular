@@ -8,9 +8,8 @@ import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
-  
     PopUpComponent,
-        SearchPipe
+    SearchPipe
   ],
   imports: [
     CommonModule,
