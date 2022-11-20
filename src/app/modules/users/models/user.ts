@@ -6,7 +6,7 @@ export interface LoginInfo
 export interface User extends LoginInfo
 {
     name:string;
-    profilePic:string;
+    profilePic?:string;
     phoneNumber:string;
     aadhaarId:string;
     userBookings?:any;

@@ -11,7 +11,7 @@ export class HttpCacheService  {
   // Storing the http response for the requested url
   put(url:string, response:HttpResponse<any>):void{
     this.requests[url] = response;
-  
+    localStorage.setItem(url,JSON.stringify(response));
   }
   // Retrieve the response 
   get(url:string):HttpResponse<any>{

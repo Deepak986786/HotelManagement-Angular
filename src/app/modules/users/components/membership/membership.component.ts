@@ -10,7 +10,6 @@ import { UserService } from 'src/app/modules/users/services/user.service';
 export class MembershipComponent implements OnInit {
 
   user?:any;  
-
   constructor(@Inject("UserService")private userService: UserService, private router:Router) { }  
 
   updateUserStatus(details:any): void {
@@ -23,7 +22,7 @@ export class MembershipComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+      
       console.log('membership component initialized');
       var details= this.userService.getLoggedInUser();
       if(details)
@@ -32,6 +31,7 @@ export class MembershipComponent implements OnInit {
         .userService
         .getUserStatusAnnouncement()
         .subscribe(details=>this.updateUserStatus(details))      
+      
   }
 
 

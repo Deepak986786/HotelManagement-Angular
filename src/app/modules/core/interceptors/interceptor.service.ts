@@ -7,8 +7,6 @@ import { UserService } from '../../users/services/user.service';
   providedIn: 'root'
 })
 export class InterceptorService {
-
-  token!: string;
     constructor(@Inject("UserService")private userService: UserService) { }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
   
@@ -23,17 +21,4 @@ export class InterceptorService {
       
       return next.handle(modifiedRequest);
     }
-     
-  
-    //   if (this.token) {
-  
-    //     const tokenizedReq = req.clone(
-    //         { setHeaders:{...this.token}});
-  
-    //     return next.handle(tokenizedReq);
-  
-    //   }
-  
-    //  // return next.handle(req);
-  
     }
