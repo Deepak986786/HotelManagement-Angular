@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { InterceptorService } from './modules/core/interceptors/interceptor.service';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -25,11 +26,7 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
     FormsModule,
     ReactiveFormsModule,
     BookingModule,
-    LoggerModule.forRoot({
-      level:NgxLoggerLevel.TRACE,
-     disableConsoleLogging:false
-
-    })
+    LoggerModule.forRoot(environment.logging)
     
   ],
   declarations: [
