@@ -12,6 +12,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+  booking: any;
 
   constructor(
     @Inject("UserService") private userService: UserService,

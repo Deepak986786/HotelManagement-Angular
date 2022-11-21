@@ -1,14 +1,17 @@
 import { HttpClientModule } from "@angular/common/http";
 import { TestBed } from "@angular/core/testing";
 import { dummybookings, dummybookingsmock } from "server-data/db-data";
-import { BookingModule } from "../modules/booking/booking.module";
-import { BookingService } from "../modules/booking/services/booking.service"
-import { HttpBookingService } from "../modules/booking/services/http-booking-service"
+import { BookingModule } from "../booking.module";
+import { BookingService } from "./booking.service"
+import { HttpBookingService } from "./http-booking-service"
 import {HttpErrorResponse} from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import { HttpUserService } from "../modules/users/services/http-user-service";
-import { UserService } from "../modules/users/services/user.service";
-import { Booking } from "../modules/booking/models/booking";
+import { HttpUserService } from "../../users/services/http-user-service";
+import { UserService } from "../../users/services/user.service";
+import { Booking } from "../models/booking";
+import { throwError } from "rxjs";
+import { NGXLogger } from "ngx-logger";
+import { LoggerTestingModule } from "ngx-logger/testing";
 
 const Url='https://localhost:5000/api/bookings';
 describe('BookingService',()=>{
@@ -16,20 +19,25 @@ describe('BookingService',()=>{
    // let bookingService:BookingService;
     let httpTestingController: HttpTestingController;
     let service:BookingService;
+  
     beforeEach(()=>{
+        
+
         TestBed.configureTestingModule({
-            imports:[BookingModule, HttpClientTestingModule],
+            imports:[HttpClientTestingModule,LoggerTestingModule],
             providers:[{provide:"BookingService",useClass:HttpBookingService},
-        {provide:"UserService",useClass:HttpUserService}]
+            {provide:"UserService",useClass:HttpUserService},
+   ]
         });
         httpTestingController = TestBed.get(HttpTestingController);
         service=TestBed.get('BookingService');
+    
     });
     it('return all bookings',()=>{
         service.getAllBookings()
         .subscribe((bookings)=>{
             expect(bookings).toBeTruthy();
-            console.log("bookings.length",bookings.length)
+           // console.log("bookings.length",bookings.length)
             expect(bookings.length).toBe(dummybookings.length);
           // const dummmybooking=dummybookings.find(dummybooking=>dummybooking.id==1);
            
@@ -37,7 +45,10 @@ describe('BookingService',()=>{
        
         const req=httpTestingController.expectOne(Url);
         expect(req.request.method).toEqual("GET");
-        req.flush(dummybookings)
+        req.flush(dummybookings);
+        // expect(mockLogger.trace).toHaveBeenCalled();
+        // expect(mockLogger.trace).toHaveBeenCalledWith("Entering into getAllBookings method of booking service");
+        
      
             });
             
@@ -84,10 +95,7 @@ describe('BookingService',()=>{
         expect(req.request.method).toEqual("POST");
     });
 
-    afterEach(() => {
-        httpTestingController.verify();
-    
-    });
+
     
     
 });

@@ -1,19 +1,24 @@
-import { HttpClientModule } from '@angular/common/http';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HttpBookingService } from 'src/app/modules/booking/services/http-booking-service';
-import { HttpUserService } from '../modules/users/services/http-user-service';
-import { UserService } from '../modules/users/services/user.service';
+import { HttpUserService } from '../../services/http-user-service';
+import { UserService } from '../../services/user.service';
 
-import { UserProfileComponent } from '../modules/users/components/user-profile/user-profile.component';
-import { dummybookings } from 'server-data/db-data';
+import { UserProfileComponent } from './user-profile.component';
+import { dummybookings, dummyUser } from 'server-data/db-data';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { throwError } from 'rxjs';
+import { LoggerTestingModule } from 'ngx-logger/testing';
 
 describe('UserProfileComponent', () => {
   let component: UserProfileComponent;
   let fixture: ComponentFixture<UserProfileComponent>;
   let bookingService:any;
+  let el:DebugElement;
 
 
   beforeEach( async() => {
@@ -22,7 +27,7 @@ describe('UserProfileComponent', () => {
       imports:[HttpClientModule,
         RouterModule,
       AppRoutingModule,
-    FormsModule],
+    FormsModule,LoggerTestingModule],
         providers:[
           {provide:"UserService",useClass:HttpUserService },
         {provide:"BookingService",useClass:HttpBookingService}
@@ -41,28 +46,46 @@ describe('UserProfileComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should get particular user',()=>{
-  //   userService.getUserByEmail("amirtha@gmail.com").subscribe((User)=>{
-  //     expect(User).toBeTruthy();
-  //     expect(User.email).toBe("amirtha@gmail.com");
-  //   });
-  // })
+ 
 
-// it ('should display only filtered dates',()=>{
-//   bookingService.find
-// })
-
-it('should correctly pass input user values', () => {
-  component.userBookings = dummybookings[0];
-  fixture.detectChanges();
+it('should check the title', () => {
+  
   const compiled = fixture.debugElement.nativeElement;
   expect(compiled.querySelector('h3').textContent).toEqual("My Bookings ");
   
 
 });
 
-it('should verifies password',()=>{
+it('should get popup while clicking button',()=>{
   
+  component.handleClick(false); 
+  expect(component.visible).toBeFalse();
+  fixture.detectChanges();
+
+  // component.handleClick(true); 
+  // fixture.detectChanges();
+
+  // component.updateBookings(true); 
+  // fixture.detectChanges();
+
+
 })
+
+it('should close when cancel is clicked',()=>{
+  component.handleClick(true); 
+  expect(component.visible).toBeFalse();
+  fixture.detectChanges();
+})
+
+
+
+
+
+
+
+
+
+
+
 
 });

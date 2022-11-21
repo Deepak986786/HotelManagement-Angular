@@ -33,6 +33,11 @@
             <ul  *ngIf="form.controls!['email'].invalid && form.controls!['email'].dirty" class="text-danger text-sm">
                 <li *ngIf="form.controls!['email'].errors!['required']" >Required</li>
                 <li *ngIf="form.controls!['email'].errors!['email']">Invalid Email</li>
+                <li *ngIf="form.controls!['email'].errors!['uniqueEmail']">
+
+                    {{form.controls!['email'].errors!['uniqueEmail'].message}}
+
+                </li>
             </ul>
     
             <!-- Password input element -->

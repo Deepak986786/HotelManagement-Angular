@@ -1,9 +1,10 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FooterComponent } from '../modules/core/components/footer/footer.component';
-import { HeaderComponent } from '../modules/core/components/header/header.component';
+import { LoggerTestingModule } from 'ngx-logger/testing';
+import { FooterComponent } from '../footer/footer.component';
+import { HeaderComponent } from '../header/header.component';
 
-import { HomeComponent } from '../modules/core/components/home/home.component';
+import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;

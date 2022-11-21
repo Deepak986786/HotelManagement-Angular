@@ -60,6 +60,7 @@ export class RoomBookingComponent implements OnInit, OnDestroy {
     this.bookingService
       .addBooking(this.booking)
       .subscribe((x) => console.log(x));
+      this.router.navigate(['user/profile',this.user.email]);
   }
 
 }

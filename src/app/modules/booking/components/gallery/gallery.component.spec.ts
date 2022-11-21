@@ -1,7 +1,7 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GalleryComponent } from '../modules/booking/components/gallery/gallery.component';
+import { GalleryComponent } from './gallery.component';
 
 describe('GalleryComponent', () => {
   let component: GalleryComponent;
@@ -23,5 +23,4 @@ describe('GalleryComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should navigate to next page')
 });

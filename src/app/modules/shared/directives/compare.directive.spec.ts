@@ -1,5 +1,4 @@
-import { compare, CompareDirective } from '../modules/shared/directives/compare.directive';
-
+import { compare, CompareDirective } from './compare.directive';
 describe('CompareDirective', () => {
   it('should create an instance', () => {
     const directive = new CompareDirective();
@@ -10,5 +9,6 @@ it('should compare password',()=>{
  expect(compare("1234","1234")).toBeTruthy();
   
 })
+
 
 });

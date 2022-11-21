@@ -57,7 +57,7 @@
                     <td scope="row">{{bookings.price | currency:'INR'}}</td>
 
                     <td scope="row">
-                        <button class="btn btn-sm btn-danger bg-danger"
+                        <button class="cancel-btn btn btn-sm btn-danger bg-danger" 
                             (click)="handleCancel(bookings.id)"><i class="fa-solid fa-trash"></i>cancel</button>  &nbsp;&nbsp;
                         <button class="btn btn-sm btn-secondary bg-secondary" (click)="handleEdit(bookings.id)"><i class="fa-solid fa-edit"></i>edit</button>
                     </td>
@@ -71,8 +71,8 @@
 
 </div>
 
-<pop-up title="Are you sure to cancel this booking ?" [(visible)]="visible" confirmText="Yes, cancel" cancelText="No"
-    (done)="handleClick($event)">
+<pop-up class=cancel-popup title="Are you sure to cancel this booking ?" [(visible)]="visible" confirmText="Yes, cancel" cancelText="No"
+    (done)="handleClick($event)"  >
 </pop-up>
 
 
@@ -87,7 +87,7 @@
         <div class="col col-md-4">
 
             <h3>Room booking</h3>
-            <form #bookingForm="ngForm">
+            <form #bookingForm="ngForm" class="updateForm">
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">@</span>
@@ -99,7 +99,7 @@
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon2">
-                        <i class="fa-solid fa-key"></i>
+                        <i class="fa-solid fa-calendar-days"></i>
                     </span>
                     <input type="number" class="form-control" placeholder="Number of days" aria-label="number of days"
                         [(ngModel)]="updateBooking.numberOfDaysStay" aria-describedby="basic-addon1" required

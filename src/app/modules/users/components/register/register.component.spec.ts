@@ -1,9 +1,10 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpUserService } from '../modules/users/services/http-user-service';
+import { LoggerTestingModule } from 'ngx-logger/testing';
+import { HttpUserService } from '../../services/http-user-service';
 
-import { RegisterComponent } from '../modules/users/components/register/register.component';
+import { RegisterComponent } from './register.component';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -12,7 +13,7 @@ describe('RegisterComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ RegisterComponent ],
-      imports:[HttpClientModule, ReactiveFormsModule],
+      imports:[HttpClientModule, ReactiveFormsModule,LoggerTestingModule],
       providers:[{provide:"UserService",useClass:HttpUserService}]
     })
     .compileComponents();

@@ -1,9 +1,11 @@
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HttpErrorResponse } from "@angular/common/http";
 import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
 import { TestBed } from "@angular/core/testing";
+import { LoggerTestingModule } from "ngx-logger/testing";
+import { throwError } from "rxjs";
 import {  loggedIn, login,loggedInDetails,  dummyUser } from "server-data/db-data";
-import { HttpUserService } from "../modules/users/services/http-user-service";
-import { UserService } from "../modules/users/services/user.service";
+import { HttpUserService } from "./http-user-service";
+import { UserService } from "./user.service";
 const url='https://localhost:5000/api/users'
 
 describe('UsersService',()=>{
@@ -11,14 +13,21 @@ describe('UsersService',()=>{
     let service:UserService;
   beforeEach(()=>{
           TestBed.configureTestingModule({
-          imports:[HttpClientTestingModule],
+          imports:[HttpClientTestingModule,LoggerTestingModule],
           providers:[{provide:"UserService",useClass:HttpUserService}]
       })
       httpTestingController=TestBed.get(HttpTestingController);
     service=TestBed.get('UserService');
   });
 
+  it('should handle error for status code 0',()=>
 
+  {
+    var error:any = new HttpErrorResponse({status:0});
+    
+    
+
+  });
 
   it('should register user',()=>{
     service.register(dummyUser)
@@ -38,9 +47,7 @@ describe('UsersService',()=>{
 
      })
      const req = httpTestingController.expectOne(`${url}/validate/${login.email}`);
-
         expect(req.request.method).toEqual("GET");
-
          req.flush(login);
   })
 
@@ -54,5 +61,17 @@ describe('UsersService',()=>{
      expect(req.request.method).toEqual("POST");
      req.flush(loggedIn);
   })
-  
+
+
+
+it('should return nothing on logout',()=>{
+  service.logOut().subscribe()
+})
+
+
+
+
+  afterEach(() => {
+    httpTestingController.verify();
+});
 })

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { LoggerTestingModule } from 'ngx-logger/testing';
 
-import { HeaderComponent } from '../modules/core/components/header/header.component';
+import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -31,7 +32,7 @@ describe('HeaderComponent', () => {
 it('should have title as Awesome Hotel',(()=>{
   const fixture=TestBed.createComponent(HeaderComponent);
   const app=fixture.debugElement.componentInstance;
-  expect(app.title).toEqual('HotelMnagement-Client')
+  expect(app.title).toEqual('HotelManagement-Client')
 }))
 
 });
