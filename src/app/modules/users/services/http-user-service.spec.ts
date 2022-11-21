@@ -56,6 +56,9 @@ describe('UsersService',()=>{
      expect(req.request.method).toEqual("POST");
      req.flush(loggedIn);
   })
+  it('should return nothing on logout',()=>{
+    service.logOut().subscribe()
+  })
 
   afterEach(()=>{
     httpTestingController.verify();

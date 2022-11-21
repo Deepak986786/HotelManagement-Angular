@@ -12,6 +12,7 @@ import { InterceptorService } from './modules/core/interceptors/interceptor.serv
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { HttpCacheService } from './modules/core/services/http-cache.service';
 import { CacheInterceptor } from './modules/core/interceptors/cache-interceptor.service';
+import { environment } from 'src/environments/environment';
 @NgModule({
   imports: [
     BrowserModule,
@@ -20,11 +21,7 @@ import { CacheInterceptor } from './modules/core/interceptors/cache-interceptor.
     FormsModule,
     ReactiveFormsModule,
     BookingModule,
-    LoggerModule.forRoot({
-      level:NgxLoggerLevel.TRACE,
-      disableConsoleLogging:false,
-    })
-    
+    LoggerModule.forRoot(environment.logging) 
   ],
   declarations: [
     AppComponent,
