@@ -12,12 +12,14 @@ import { UserService } from '../../services/user.service';
 })
 export class LoginComponent implements OnInit {
  
-  
+  /*
+  * Constructor for Login Component used to inject dependencies 
+  */
   constructor(
     @Inject("UserService") private userService: UserService,
     private router: Router, private logger:NGXLogger
   ) { }
-
+  // Declaration of login info
   loginInfo:LoginInfo={
     email: '',
     password:''
@@ -27,7 +29,9 @@ export class LoginComponent implements OnInit {
 
   status?:string;
   statusStyle?:string;
-
+  /**
+   * This method calls the login method of user service and subscribes to the update
+   */
    handleLogin(){
         (<Observable<LoggedInDetails>>(this.userService
         .login(this.loginInfo)))

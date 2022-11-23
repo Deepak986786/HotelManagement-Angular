@@ -15,6 +15,12 @@ export class AuthGuard implements CanActivate {
   {
 
   }
+  /**
+   * Activate allows the guard to decide if a way can be activated with the “CanActivate ()” method or not.
+   * @param route canActivate to “create” and “edit” routes
+   * @param state 
+   * @returns 
+   */
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

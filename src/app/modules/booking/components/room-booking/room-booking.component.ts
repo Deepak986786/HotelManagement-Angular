@@ -14,6 +14,13 @@ import { BookingService } from '../../services/booking.service';
 })
 export class RoomBookingComponent implements OnInit, OnDestroy {
 
+  user?: any;
+
+  booking: BookingDetails = {
+    userId: '',
+    numberOfDaysStay: 1,
+  };
+  // Constructor with dependency injection
   constructor(
     @Inject('UserService') private userService: UserService,
     @Inject('BookingService') private bookingService: BookingService,
@@ -24,19 +31,16 @@ export class RoomBookingComponent implements OnInit, OnDestroy {
     
   }
 
-  user?: any;
+  
 
-  booking: BookingDetails = {
-    userId: '',
-    numberOfDaysStay: 1,
-  };
-
+  // Updates the user details
   updateUserStatus(details: any): void {
     if (details) this.user = details.user;
     else this.user = undefined;
   }
 
   subsciption: any;
+  // Initializing the component with logged in user details
   ngOnInit(): void {
     console.log('getting logged in user details');
     var details = this.userService.getLoggedInUser();
@@ -45,10 +49,14 @@ export class RoomBookingComponent implements OnInit, OnDestroy {
       .getUserStatusAnnouncement()
       .subscribe((details) => this.updateUserStatus(details));
   }
+  // Unsubscribe the subscription
   ngOnDestroy(): void {
     this.subsciption.unsubscribe();
   }
 
+  /**
+   * This method adds booking of a room and redirecting to user profile page
+   */
   bookRoom() {
     this.logger.info("Entering into bookRoom method");
     console.log(this.booking);

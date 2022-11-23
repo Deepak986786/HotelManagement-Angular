@@ -12,7 +12,9 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { SharedModule } from '../shared/shared.module';
 
 
-
+/**
+ * Users module with it components declarations, export and importing modules
+ */
 
 
 @NgModule({

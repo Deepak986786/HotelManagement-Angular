@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
   statusStyle='text-primary';
   form:FormGroup;
   /*
-  * Constructor for Registration Component
+  * Constructor for Registration Component used to inject dependencies 
   */
   constructor(private builder :FormBuilder,
              @Inject("UserService") private userService:UserService,

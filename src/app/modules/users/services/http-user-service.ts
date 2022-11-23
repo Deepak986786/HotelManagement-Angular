@@ -8,11 +8,17 @@ import { UserService } from "./user.service";
 
 const baseUrl='https://localhost:5000/api/users';
 
+// This class implements the User Service methods
 @Injectable()
 export class HttpUserService implements UserService{
 
     loggedInUserAnnouncement = new Subject<LoggedInDetails|undefined>();
     loggedInUser?:LoggedInDetails;
+    /**
+     * 
+     * The constructor with dependency injection and get the user details from local storage 
+     *
+     */
     constructor(private http:HttpClient, private logger:NGXLogger){
         if(!this.loggedInUser)
         {
@@ -24,15 +30,30 @@ export class HttpUserService implements UserService{
             }
         }
     }
+
+    /**
+     * This method sends http get request to the server
+     * @param email 
+     * @returns Observable of user
+     */
     getUserByEmail(email: string): Observable<User> {
         this.logger.trace('Entering into getUserByEmail method of user service');
         return this.http.get<User>(baseUrl+'/'+email);
     }
-    
+
+    /**
+     * This method
+     * @returns logged in user details if logged in otherwise nothing.
+     */
     getLoggedInUser(): LoggedInDetails|undefined {
         this.logger.trace('Entering into getLoggedInUser method of user service');
         return this.loggedInUser;
     }
+
+    /**
+     * This method sends the http get request to get all users
+     * @returns all users
+     */
     getAllUsers(): Observable<User[]> {
         this.logger.trace('Entering into getAllUsers method of user service');
         return this
@@ -41,7 +62,10 @@ export class HttpUserService implements UserService{
     }
    
    
-
+    /**
+     * This method checks the user login status and send token as a request header
+     * @returns Authorization token coming from server
+     */
     getAuthenticationHeader()
     {
         if(!this.loggedInUser)
@@ -52,6 +76,10 @@ export class HttpUserService implements UserService{
             }
     }
 
+    /**
+     * This method update the details of user in local storage based on login status
+     * @param user 
+     */
     updateCurrentUser(user?:LoggedInDetails){
         this.logger.trace('Entering into updateCurrentUser method of user service');
         this.loggedInUser=user;
@@ -62,6 +90,12 @@ export class HttpUserService implements UserService{
             localStorage.removeItem("user");
     }
 
+    /**
+     * This method sends http post request to the server with login Info taken from client
+     * and updates the current user status 
+     * @param loginInfo 
+     * @returns Observable of LoggedInDetails 
+     */
     login(loginInfo: LoginInfo): Observable<LoggedInDetails> {
         return this
                     .http
@@ -75,9 +109,13 @@ export class HttpUserService implements UserService{
                     );
 
 
-
     }
-    
+
+    /**
+     * This method sends the http post request with the entered details along with headers information
+     * @param user 
+     * @returns Observable of user
+     */
     register(user: User):  Observable<User> {
         this.logger.trace('Entering into register method of user service');
         return this.http.post<User>(baseUrl , user,{headers:{
@@ -85,6 +123,11 @@ export class HttpUserService implements UserService{
         }});
     }
 
+    /**
+     * This helper method checks the http error response and throws error
+     * @param error 
+     * @returns observable
+     */
     _handleError(error:HttpErrorResponse){
         if(error.status === 404){
             return of(false);  //return false as an observable result
@@ -92,6 +135,12 @@ export class HttpUserService implements UserService{
             return throwError(()=> error); //else let the error go
         }
     }
+
+    /**
+     * This method sends the http get request to the server to validate email
+     * @param email 
+     * @returns 
+     */
     isEmailRegistered(email: string): Observable<boolean> {
 
         return this
@@ -103,12 +152,19 @@ export class HttpUserService implements UserService{
                     );
        
     }
+    /**
+     * This method returns the logged in user announcemnet details
+     * @returns Logged in details if user logged in or nothing
+     */
     getUserStatusAnnouncement(): Subject<LoggedInDetails | undefined> {
     this.logger.trace('Entering into getUserStatusAnnouncement method of user service');
     return this.loggedInUserAnnouncement;
     }
 
-  
+    /**
+     * This method updates the user status as undefined 
+     * @returns observable of void
+     */
     logOut():Observable<void> {
         this.logger.trace('Entering into logOut method of user service');
         this.updateCurrentUser();

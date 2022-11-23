@@ -11,7 +11,7 @@ export class MembershipComponent implements OnInit {
 
   user?:any;  
   constructor(@Inject("UserService")private userService: UserService, private router:Router) { }  
-
+ // This is helper method sets the logged-in user
   updateUserStatus(details:any): void {
     
     if(details)
@@ -20,7 +20,7 @@ export class MembershipComponent implements OnInit {
       this.user=undefined;
 
   }
-
+  // This method intializes the membership component
   ngOnInit(): void {
       
       console.log('membership component initialized');
@@ -34,17 +34,17 @@ export class MembershipComponent implements OnInit {
       
   }
 
-
+  // This method unsubscribe the getUserStatusAnnouncement
   ngOnDestroy(): void {
    
     this.userService.getUserStatusAnnouncement().unsubscribe();
   }
 
  
-  
+  // This method handle logOut method and navigate to the login page
   async handleLogout(){
     await this.userService.logOut();
-  this.router.navigate(['user/login'])
+    this.router.navigate(['user/login'])
   }
 
   

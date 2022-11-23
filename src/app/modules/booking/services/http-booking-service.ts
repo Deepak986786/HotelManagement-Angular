@@ -12,16 +12,26 @@ const url = "https://localhost:5000/api/bookings";
     providedIn:"root"    
 })
 export class HttpBookingService implements BookingService {
+    // Constructor with dependency injection
     constructor(
         private http: HttpClient, private logger:NGXLogger,
         @Inject("UserService") private userService: UserService,
     ){  }
    
+    /**
+     * This method sends the http get request to the api server 
+     * @returns Observable of list of bookings
+     */
     getAllBookings(): Observable<Booking[]> {
        this.logger.info('Entering into getAllBookings method of booking service');
         return this.http.get<Booking[]>(url);
     }
     
+    /**
+     * This method sends the http get request for particular id passed
+     * @param id 
+     * @returns booking observable
+     */
     getBookingById(id: number): Observable<Booking> {
         this.logger.info('Entering into getBookingById method of booking service');
         return this
@@ -29,24 +39,42 @@ export class HttpBookingService implements BookingService {
                     .get<Booking>(`${url}/${id}`);
     }
 
-    get options(){
-        return {
-            headers: this.userService.getAuthenticationHeader()
-        }
-    }
+    // get options(){
+    //     return {
+    //         headers: this.userService.getAuthenticationHeader()
+    //     }
+    // }
 
+    /**
+     * This method sends the http post request to server to add booking details
+     * @param booking 
+     * @returns Observable of booking
+     */
     addBooking(booking: BookingDetails): Observable<Booking> {
         this.logger.info('Entering into addBooking method of booking service');
         return this
         .http
         .post<Booking>(url,booking);
     }
+
+    /**
+     * This method sends http delete request to api server
+     * @param id 
+     * @returns nothing
+     */
     cancelBooking(id: number): Observable<void> {
         this.logger.info('Entering into cancelBooking method of booking service');
         return this
         .http
         .delete<void>(`${url}/${id}`);
     }
+
+    /**
+     * This method sends the http put request to api server for updating booking details
+     * @param booking 
+     * @param bookingId 
+     * @returns Observable of booking
+     */
     updateBooking(booking: BookingDetails , bookingId:number): Observable<Booking> {
         this.logger.info('Entering into updateBooking method of booking service');
         return this

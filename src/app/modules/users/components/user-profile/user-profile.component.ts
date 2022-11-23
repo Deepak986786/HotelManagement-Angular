@@ -12,6 +12,9 @@ import { UserService } from "../../services/user.service";
 })
 export class UserProfileComponent implements OnInit {
   booking: any;
+  /*
+  * Constructor for User-profile Component with dependency injection
+  */
   constructor(
     @Inject("UserService") private userService: UserService,
     private activatedRoute: ActivatedRoute,
@@ -19,6 +22,7 @@ export class UserProfileComponent implements OnInit {
     private router: Router
   ) { }
 
+  // Declaring details of user, bookings and search-bar
   details?: LoggedInDetails;
 
   user?: User;
@@ -28,6 +32,10 @@ export class UserProfileComponent implements OnInit {
   search=''
 
   userBookings?:Booking[];
+
+  /**
+   * This method is called to initializes the component with logged in user details
+   */
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
 
@@ -44,17 +52,17 @@ export class UserProfileComponent implements OnInit {
   }
   visible: boolean = false;
   updatevisible:boolean=false;
-
+  // This method sets the visibility of cancel pop up to true. 
   showPopup() {
     this.visible = true;
   }
-
+  // This method sets the visibility of edit pop up to true. 
   edit(){
     this.updatevisible=true;
   }
 
   bookingId:number=1;
-
+  // This method gets the booking id to cancel and call popup method
   handleCancel(id: number) {
     this.showPopup();
     console.log("cancel clicked");
@@ -63,12 +71,18 @@ export class UserProfileComponent implements OnInit {
 
   }
 
+  // This method gets the booking id to edit and call edit method
   handleEdit(id: number) {
     this.edit();
     this.bookingId=id;
 
   }
 
+  /**
+   * This method cancel the booking based on the confirmation value passed
+   * @param confirmation 
+   * 
+   */
   handleClick(confirmation: boolean) {
     console.log(confirmation);
     if (!confirmation) {
@@ -102,7 +116,10 @@ export class UserProfileComponent implements OnInit {
 
  }
 
-
+ /**
+  * This method update the booking based on the confirmation value passed
+  * @param confirmation 
+  */
  updateBookings(confirmation:boolean){
   if(confirmation){
       this.updateBooking.userId = this.user!.email

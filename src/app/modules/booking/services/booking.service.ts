@@ -1,7 +1,7 @@
 import { Observable } from "rxjs";
 import { Booking, BookingDetails } from "../models/booking";
 
-
+// Interface with booking related CRUD methods 
 export interface BookingService
 {
     getAllBookings(): Observable<Booking[]>;
