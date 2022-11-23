@@ -12,7 +12,6 @@ import { HttpBookingService } from "./http-booking-service";
 const Url='https://localhost:5000/api/bookings';
 describe('BookingService',()=>{
 
-   // let bookingService:BookingService;
     let httpTestingController: HttpTestingController;
     let service:BookingService;
     beforeEach(()=>{
@@ -24,23 +23,22 @@ describe('BookingService',()=>{
         httpTestingController = TestBed.get(HttpTestingController);
         service=TestBed.get('BookingService');
     });
-    it('return all bookings',()=>{
+        it('return all bookings',()=>{
         service.getAllBookings()
         .subscribe((bookings)=>{
             expect(bookings).toBeTruthy();
             console.log("bookings.length",bookings.length)
             expect(bookings.length).toBe(dummybookings.length);
-          // const dummmybooking=dummybookings.find(dummybooking=>dummybooking.id==1);
+          
            
         });
-       
         const req=httpTestingController.expectOne(Url);
         expect(req.request.method).toEqual("GET");
         req.flush(dummybookings)
      
             });
             
-            it('should find by id',()=>{
+        it('should find by id',()=>{
                 service.getBookingById(dummybookings[0].id)
                 .subscribe(booking=>{
                     expect(booking).toBeTruthy();
@@ -49,9 +47,9 @@ describe('BookingService',()=>{
         const req=httpTestingController.expectOne(`${Url}/1`);
         expect(req.request.method).toEqual("GET");
         req.flush(dummybookings[0]);
-    });
+        });
 
-    it('should update details by id',()=>{
+        it('should update details by id',()=>{
         service.updateBooking(dummybookings[0],dummybookings[0].id)
         .subscribe(bookings=>{
             expect(bookings).toBeTruthy();

@@ -19,8 +19,8 @@ describe('UserProfileComponent', () => {
       declarations: [ UserProfileComponent ],
       imports:[HttpClientModule,
         RouterModule,
-      AppRoutingModule,
-    FormsModule,LoggerTestingModule],
+        AppRoutingModule,
+        FormsModule,LoggerTestingModule],
         providers:[{provide:"UserService",useClass:HttpUserService},
         {provide:"BookingService",useClass:HttpBookingService}]
     })
@@ -41,7 +41,7 @@ describe('UserProfileComponent', () => {
     expect(compiled.querySelector('h3').textContent).toEqual("My Bookings");
   });
 
-  it('should popup while clicking button',()=>{
+  it('should open popup while clicking button',()=>{
     component.handleClick(false);
     expect(component.visible).toBeFalse();
     fixture.detectChanges();

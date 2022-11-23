@@ -27,11 +27,5 @@ describe('PopUpComponent', () => {
     fixture.detectChanges();
   });
   
-  // it('should display popup when button clicked', fakeAsync(()=>{
-  //   spyOn(component,'done');
-  //   let button = fixture.debugElement.nativeElement.querySelector('button');
-  //   button.click();
-  //   tick();
-  //   expect(component.done).toHaveBeenCalled();
-  // }));
+ 
 });
