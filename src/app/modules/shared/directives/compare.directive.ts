@@ -18,6 +18,12 @@ export class CompareDirective  {
  
 
 }
+/**
+ * compare method which can be exported
+ * @param {string} password 
+ * @param {string} confirmPassword 
+ * @returns Validator function
+ */
 export const compare = (password:string, confirmPassword:string):ValidatorFn =>{
 
   return control =>{

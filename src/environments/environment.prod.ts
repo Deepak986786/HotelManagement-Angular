@@ -1,5 +1,7 @@
 import { NgxLoggerLevel } from "ngx-logger";
-
+/**
+ * environment object with logging settings and production mode
+ */
 export const environment = {
   production: true,
   logging:{

@@ -7,20 +7,34 @@ import { UserService } from 'src/app/modules/users/services/user.service';
 import { BookingDetails } from '../../models/booking';
 import { BookingService } from '../../services/booking.service';
 
+/**
+ * The Room booking component
+ */
 @Component({
   selector: 'room-booking',
   templateUrl: './room-booking.component.html',
   styleUrls: ['./room-booking.component.css'],
 })
 export class RoomBookingComponent implements OnInit, OnDestroy {
-
+  /**
+   * Declaring user
+   */
   user?: any;
-
+  /**
+   * Declaring booking of type BookingDetails
+   */
   booking: BookingDetails = {
     userId: '',
     numberOfDaysStay: 1,
   };
-  // Constructor with dependency injection
+  /**
+   * Constructor with dependency injection of below parameters
+   * @param userService This is userService instance paramater
+   * @param bookingService This is bookingService instance paramater
+   * @param router This is router instance paramater
+   * @param fb This is form builder instance paramater
+   * @param logger This is the logger instance paramater 
+   */
   constructor(
     @Inject('UserService') private userService: UserService,
     @Inject('BookingService') private bookingService: BookingService,
@@ -31,16 +45,22 @@ export class RoomBookingComponent implements OnInit, OnDestroy {
     
   }
 
-  
-
-  // Updates the user details
+  /**
+   * Updates the user details
+   * @param details 
+   */
   updateUserStatus(details: any): void {
     if (details) this.user = details.user;
     else this.user = undefined;
   }
-
+  /**
+   * Declaring subscription variable
+   */
   subsciption: any;
-  // Initializing the component with logged in user details
+
+  /**
+   * Initializing the component with logged in user details
+   */
   ngOnInit(): void {
     console.log('getting logged in user details');
     var details = this.userService.getLoggedInUser();
@@ -49,7 +69,9 @@ export class RoomBookingComponent implements OnInit, OnDestroy {
       .getUserStatusAnnouncement()
       .subscribe((details) => this.updateUserStatus(details));
   }
-  // Unsubscribe the subscription
+  /**
+   *  Unsubscribe the subscription
+   */
   ngOnDestroy(): void {
     this.subsciption.unsubscribe();
   }

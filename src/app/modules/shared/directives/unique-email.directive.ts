@@ -27,6 +27,12 @@ export class UniqueEmailDirective implements AsyncValidator {
 
 }
 
+/**
+ * uniqueEmailValidator function for directive
+ * @param userService 
+ * @returns AsyncValidatorFunction
+ */
+
 export const uniqueEmailValidator = (userService: UserService): AsyncValidatorFn => {
 
   var actualValidator: AsyncValidatorFn = (control: AbstractControl<any, any>)

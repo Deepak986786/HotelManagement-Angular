@@ -6,13 +6,24 @@ import { UserService } from "../../users/services/user.service";
 import { Booking, BookingDetails } from "../models/booking";
 import { BookingService } from "./booking.service";
 
+/**
+ * API url for bookings
+ */
 const url = "https://localhost:5000/api/bookings";
 
+/**
+ * HttpBookingService class registered as a service 
+ */
 @Injectable({
     providedIn:"root"    
 })
 export class HttpBookingService implements BookingService {
-    // Constructor with dependency injection
+    /**
+     * Constructor with dependency injection
+     * @param http 
+     * @param logger 
+     * @param userService 
+     */
     constructor(
         private http: HttpClient, private logger:NGXLogger,
         @Inject("UserService") private userService: UserService,
@@ -39,11 +50,7 @@ export class HttpBookingService implements BookingService {
                     .get<Booking>(`${url}/${id}`);
     }
 
-    // get options(){
-    //     return {
-    //         headers: this.userService.getAuthenticationHeader()
-    //     }
-    // }
+    
 
     /**
      * This method sends the http post request to server to add booking details

@@ -30,7 +30,10 @@ export class RegisterComponent implements OnInit {
               private router:Router, private logger:NGXLogger
               ) {
 
-    // Declaring password, phone number and aadhaar id validators
+    /**
+     * Declaring password, phone number and aadhaar id validators
+     *  
+     * */ 
     const passwordValidators=[
       Validators.required, 
       Validators.minLength(4),
@@ -49,7 +52,9 @@ export class RegisterComponent implements OnInit {
       Validators.maxLength(12)
     ];
 
-    // Creating form with builder
+    /**
+     * Creating form with builder
+     */
     this.form=this.builder.group({
       name: ['', [Validators.required]],
       email:['', [
@@ -72,11 +77,14 @@ export class RegisterComponent implements OnInit {
     {validator: compare('password','confirmPassword')}
     );
   }
-  /*
-  * handleRegistration method 
-    takes: form values 
-    invokes: register method of user service which requires user object
-    redirect: navigate to login upon successful registration
+  /**
+   *  handleRegistration method 
+   * 
+   * takes: form values 
+   * 
+   * invokes: register method of user service which requires user object
+   * 
+   * redirect: navigate to login upon successful registration
 
   */
   handleRegistration(){

@@ -26,7 +26,6 @@ import { environment } from 'src/environments/environment';
   declarations: [
     AppComponent,
 ],
-         
   providers: [
     {provide:"UserService",useClass:HttpUserService},
     {provide:"BookingService",useClass:HttpBookingService},

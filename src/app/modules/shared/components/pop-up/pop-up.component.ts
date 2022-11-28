@@ -19,7 +19,7 @@ export class PopUpComponent implements OnInit {
 
 
   @Input() visible:boolean = false;
-  @Output() visibleChange = new EventEmitter<boolean>;
+  @Output() visibleChange = new EventEmitter<boolean>();
 
   @Output() done=new EventEmitter<boolean>();
   

@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { LoggedInDetails, LoginInfo, User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 
+/**
+ * Login component
+ */
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -19,15 +22,24 @@ export class LoginComponent implements OnInit {
     @Inject("UserService") private userService: UserService,
     private router: Router, private logger:NGXLogger
   ) { }
-  // Declaration of login info
+  /**
+   * Declaration of login info of type LoginInfo 
+   */
   loginInfo:LoginInfo={
     email: '',
     password:''
   };  
-
+  /**
+   * Declaring loggedInUser of type User 
+   */
   loggedInUser?:User;
-
+  /**
+   * Declaring status of type string
+   */
   status?:string;
+  /**
+   * Declaring statusStyle of type string
+   */
   statusStyle?:string;
   /**
    * This method calls the login method of user service and subscribes to the update
@@ -56,7 +68,9 @@ export class LoginComponent implements OnInit {
 
 
   }
-
+  /**
+   * @ignore
+   */
   ngOnInit(): void {
    
   }

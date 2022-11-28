@@ -5,14 +5,24 @@ import { catchError, map, Observable, of, Subject, tap, throwError } from "rxjs"
 import { LoggedInDetails, LoginInfo, User } from "../models/user";
 import { UserService } from "./user.service";
 
-
+/**
+ * API url for users
+ */
 const baseUrl='https://localhost:5000/api/users';
 
-// This class implements the User Service methods
+/**
+ * This class implements the User Service methods
+ */
 @Injectable()
 export class HttpUserService implements UserService{
 
+    /**
+     * Declaration of loggedInUserAnnouncement
+     */
     loggedInUserAnnouncement = new Subject<LoggedInDetails|undefined>();
+    /**
+     * Declaration of loggedInUser details
+     */
     loggedInUser?:LoggedInDetails;
     /**
      * 
@@ -33,7 +43,7 @@ export class HttpUserService implements UserService{
 
     /**
      * This method sends http get request to the server
-     * @param email 
+     * @param{string} email 
      * @returns Observable of user
      */
     getUserByEmail(email: string): Observable<User> {
@@ -50,7 +60,7 @@ export class HttpUserService implements UserService{
         return this.loggedInUser;
     }
 
-    /**
+     /**
      * This method sends the http get request to get all users
      * @returns all users
      */
@@ -64,6 +74,7 @@ export class HttpUserService implements UserService{
    
     /**
      * This method checks the user login status and send token as a request header
+     * 
      * @returns Authorization token coming from server
      */
     getAuthenticationHeader()
