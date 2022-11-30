@@ -3,13 +3,25 @@ import { Injectable } from '@angular/core';
 import { Observable, of, tap } from 'rxjs';
 import { HttpCacheService } from '../services/http-cache.service';
 
+/**
+ * CacheInterceptor service
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class CacheInterceptor implements HttpInterceptor {
 
+  /**
+   * Constructor with dependency injection
+   * @param cacheService 
+   */
   constructor(private cacheService:HttpCacheService){}
-  // check each request from browser
+  /**
+   * check each request from browser
+   * @param req 
+   * @param next 
+   * @returns Observable of Event
+   */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if(req.method !== 'GET')
     {
@@ -17,16 +29,22 @@ export class CacheInterceptor implements HttpInterceptor {
       this.cacheService.invalidateCache();
       return next.handle(req);
     }
-    // Retrieving cached response for the request url
+    /**
+     * Retrieving cached response for the request url
+     */
     const cachedResponse: HttpResponse<any> = this.cacheService.get(req.url);
-    // If cache has response then take cached response 
+    /**
+     * If cache has response then take cached response 
+     */
     if(cachedResponse)
     {
       console.log(`Returning from cache : ${cachedResponse.url}`);
       console.log(cachedResponse);
       return of(cachedResponse);
     }
-    // send request to the server and save the response in cache
+    /**
+     * send request to the server and save the response in cache
+     */
     return next.handle(req)
       .pipe(
         tap(result =>{

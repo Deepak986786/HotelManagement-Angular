@@ -15,8 +15,13 @@ export class HeaderComponent implements OnInit {
    */
   @Input() title:string='HotelManagement-Client';
   
+  /**
+   * constructor
+   */
   constructor() { }
-
+  /**
+   * Initialization method angular life cycle hook
+   */
   ngOnInit(): void {
   }
 

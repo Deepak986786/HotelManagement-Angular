@@ -61,6 +61,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Compare directive</p>
+
+            </p>
 
 
 
@@ -90,24 +97,6 @@
         </section>
 
 
-            <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor()</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/shared/directives/compare.directive.ts:15</a></div>
-                            </td>
-                        </tr>
-
-            </tbody>
-        </table>
-</section>
 
 
 
@@ -124,6 +113,9 @@
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } 
 from &#x27;@angular/forms&#x27;;
 
+/**
+ * Compare directive
+ */
 @Directive({
   selector: &#x27;[compareTo]&#x27;,
   providers:[
@@ -136,6 +128,9 @@ from &#x27;@angular/forms&#x27;;
 })
 export class CompareDirective  {
 
+  /**
+   * @ignore
+   */
   constructor() { }
  
 

@@ -5,7 +5,9 @@ import { AbstractControl, AsyncValidator, AsyncValidatorFn, NG_ASYNC_VALIDATORS,
 import { map, Observable, of } from 'rxjs';
 import { UserService } from '../../users/services/user.service';
 
-
+/**
+ * Unique Email directive
+ */
 @Directive({
   selector: '[uniqueEmail]',
   providers: [
@@ -16,8 +18,16 @@ import { UserService } from '../../users/services/user.service';
 })
 export class UniqueEmailDirective implements AsyncValidator {
 
+  /**
+   * constructor of UniqueEmailDirective with dependency injection
+   * @param userService 
+   */
   constructor(@Inject("UserService") private userService: UserService) { }
-
+  /**
+   * validate method
+   * @param control 
+   * @returns Promise of type ValidationErrors or null, Observable of ValidationErrors or null
+   */
   validate(control: AbstractControl<any, any>): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
     return uniqueEmailValidator(this.userService)(control);
   }

@@ -2,6 +2,9 @@ import { Directive } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } 
 from '@angular/forms';
 
+/**
+ * Compare directive
+ */
 @Directive({
   selector: '[compareTo]',
   providers:[
@@ -14,6 +17,9 @@ from '@angular/forms';
 })
 export class CompareDirective  {
 
+  /**
+   * @ignore
+   */
   constructor() { }
  
 

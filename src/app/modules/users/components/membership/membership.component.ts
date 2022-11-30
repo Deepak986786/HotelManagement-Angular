@@ -2,6 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/modules/users/services/user.service';
 
+/**
+ * Membership component
+ */
 @Component({
   selector: 'membership',
   templateUrl: './membership.component.html',
@@ -9,9 +12,20 @@ import { UserService } from 'src/app/modules/users/services/user.service';
 })
 export class MembershipComponent implements OnInit {
 
+  /**
+   * user variable declaration
+   */
   user?:any;  
+  /**
+   * constructor with dependency injection
+   * @param userService 
+   * @param router 
+   */
   constructor(@Inject("UserService")private userService: UserService, private router:Router) { }  
- // This is helper method sets the logged-in user
+  /**
+   * This is helper method sets the logged-in user
+   * @param details 
+   */
   updateUserStatus(details:any): void {
     
     if(details)
@@ -20,7 +34,9 @@ export class MembershipComponent implements OnInit {
       this.user=undefined;
 
   }
-  // This method intializes the membership component
+  /**
+   * This method intializes the membership component
+   */
   ngOnInit(): void {
       
       console.log('membership component initialized');
@@ -34,14 +50,18 @@ export class MembershipComponent implements OnInit {
       
   }
 
-  // This method unsubscribe the getUserStatusAnnouncement
+  /**
+   * This method unsubscribe the getUserStatusAnnouncement
+   */
   ngOnDestroy(): void {
    
     this.userService.getUserStatusAnnouncement().unsubscribe();
   }
 
  
-  // This method handle logOut method and navigate to the login page
+  /**
+   * This method handle logOut method and navigate to the login page
+   */
   async handleLogout(){
     await this.userService.logOut();
     this.router.navigate(['user/login'])

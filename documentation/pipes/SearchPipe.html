@@ -66,6 +66,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Search pipe</p>
+
+            </p>
 
 
         <section>
@@ -105,14 +112,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="9"
-                            class="link-to-prism">src/app/modules/shared/pipes/search.pipe.ts:9</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">src/app/modules/shared/pipes/search.pipe.ts:18</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>transform method</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -172,7 +181,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>Booking array</p>
+
                     </div>
                 </td>
             </tr>
@@ -187,11 +197,20 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Pipe, PipeTransform } from &#x27;@angular/core&#x27;;
 import { Booking } from &#x27;../../booking/models/booking&#x27;;
 
+/**
+ * Search pipe
+ */
 @Pipe({
   name: &#x27;search&#x27;
 })
 export class SearchPipe implements PipeTransform {
-
+  /**
+   * transform method 
+   * @param bookings 
+   * @param search 
+   * @param args 
+   * @returns Booking array
+   */
   transform(bookings: Booking[]|undefined,search:string, ...args: unknown[]): Booking[] {
     return bookings!.filter(booking&#x3D;&gt;booking.bookingDate.includes(search));
   }

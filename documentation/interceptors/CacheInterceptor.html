@@ -63,6 +63,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>CacheInterceptor service</p>
+
+            </p>
 
 
             <section>
@@ -104,12 +111,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/modules/core/interceptors/cache-interceptor.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/core/interceptors/cache-interceptor.service.ts:12</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor with dependency injection</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -167,14 +176,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="13"
-                            class="link-to-prism">src/app/modules/core/interceptors/cache-interceptor.service.ts:13</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/app/modules/core/interceptors/cache-interceptor.service.ts:25</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>check each request from browser</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -222,7 +233,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>Observable of Event</p>
+
                     </div>
                 </td>
             </tr>
@@ -239,13 +251,25 @@ import { Injectable } from &#x27;@angular/core&#x27;;
 import { Observable, of, tap } from &#x27;rxjs&#x27;;
 import { HttpCacheService } from &#x27;../services/http-cache.service&#x27;;
 
+/**
+ * CacheInterceptor service
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class CacheInterceptor implements HttpInterceptor {
 
+  /**
+   * Constructor with dependency injection
+   * @param cacheService 
+   */
   constructor(private cacheService:HttpCacheService){}
-  // check each request from browser
+  /**
+   * check each request from browser
+   * @param req 
+   * @param next 
+   * @returns Observable of Event
+   */
   intercept(req: HttpRequest&lt;any&gt;, next: HttpHandler): Observable&lt;HttpEvent&lt;any&gt;&gt; {
     if(req.method !&#x3D;&#x3D; &#x27;GET&#x27;)
     {
@@ -253,16 +277,22 @@ export class CacheInterceptor implements HttpInterceptor {
       this.cacheService.invalidateCache();
       return next.handle(req);
     }
-    // Retrieving cached response for the request url
+    /**
+     * Retrieving cached response for the request url
+     */
     const cachedResponse: HttpResponse&lt;any&gt; &#x3D; this.cacheService.get(req.url);
-    // If cache has response then take cached response 
+    /**
+     * If cache has response then take cached response 
+     */
     if(cachedResponse)
     {
       console.log(&#x60;Returning from cache : ${cachedResponse.url}&#x60;);
       console.log(cachedResponse);
       return of(cachedResponse);
     }
-    // send request to the server and save the response in cache
+    /**
+     * send request to the server and save the response in cache
+     */
     return next.handle(req)
       .pipe(
         tap(result &#x3D;&gt;{

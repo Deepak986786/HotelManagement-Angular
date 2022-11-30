@@ -19,6 +19,9 @@ export class HomeComponent implements OnInit {
     this.logger.info("Home component created")
   }
 
+  /**
+   * Initialization method
+   */
   ngOnInit(): void {
  
   }

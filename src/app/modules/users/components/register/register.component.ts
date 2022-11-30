@@ -11,16 +11,30 @@ import { uniqueEmailValidator } from 'src/app/modules/shared/directives/unique-e
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 
+/**
+ * Register component
+ */
 @Component({
   selector: 'register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  /**
+   * user variable of type User
+   */
   user?:User
+  /**
+   * status variable initialized with empty string 
+   */
   status=''; 
+  /**
+   * statusStyle initialized with text-primary
+   */
   statusStyle='text-primary';
+  /**
+   * form of type Formgroup
+   */
   form:FormGroup;
   /*
   * Constructor for Registration Component used to inject dependencies 
@@ -31,7 +45,7 @@ export class RegisterComponent implements OnInit {
               ) {
 
     /**
-     * Declaring password, phone number and aadhaar id validators
+     * Declaring password validators
      *  
      * */ 
     const passwordValidators=[
@@ -39,13 +53,17 @@ export class RegisterComponent implements OnInit {
       Validators.minLength(4),
       Validators.maxLength(15)
     ];
-
+    /**
+     * Declaring phone number validators
+     */
     const phoneNumberValidators=[
       Validators.required, 
       Validators.minLength(10),
       Validators.maxLength(10)
     ];
-
+    /**
+     *  Declaring aadhaar id validators
+     */
     const aadhaarIdValidators=[
       Validators.required, 
       Validators.minLength(12),
@@ -117,6 +135,9 @@ export class RegisterComponent implements OnInit {
       })   
   }
 
+  /**
+   * @internal
+   */
   ngOnInit(): void {
   }
 

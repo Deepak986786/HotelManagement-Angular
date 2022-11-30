@@ -19,8 +19,7 @@ export class LoginComponent implements OnInit {
   * Constructor for Login Component used to inject dependencies 
   */
   constructor(
-    @Inject("UserService") private userService: UserService,
-    private router: Router, private logger:NGXLogger
+    @Inject("UserService") private userService: UserService, private router: Router, private logger:NGXLogger
   ) { }
   /**
    * Declaration of login info of type LoginInfo 

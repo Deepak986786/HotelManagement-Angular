@@ -185,6 +185,12 @@
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>constructor</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -252,14 +258,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/app/modules/core/components/header/header.component.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/app/modules/core/components/header/header.component.ts:25</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Initialization method angular life cycle hook</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -292,8 +300,13 @@ export class HeaderComponent implements OnInit {
    */
   @Input() title:string&#x3D;&#x27;HotelManagement-Client&#x27;;
   
+  /**
+   * constructor
+   */
   constructor() { }
-
+  /**
+   * Initialization method angular life cycle hook
+   */
   ngOnInit(): void {
   }
 

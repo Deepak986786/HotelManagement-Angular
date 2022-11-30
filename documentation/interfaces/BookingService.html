@@ -152,16 +152,14 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/app/modules/booking/services/booking.service.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">src/app/modules/booking/services/booking.service.ts:13</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>addBooking method</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -223,16 +221,14 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/app/modules/booking/services/booking.service.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/app/modules/booking/services/booking.service.ts:15</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>cancelBooking method</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -294,16 +290,14 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/modules/booking/services/booking.service.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="9"
+                            class="link-to-prism">src/app/modules/booking/services/booking.service.ts:9</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>getAllBookings method declaration with return type of Booking[] Observable</p>
-</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../interfaces/Booking.html" target="_self" >Observable&lt;Booking[]&gt;</a></code>
@@ -333,16 +327,14 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/modules/booking/services/booking.service.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="11"
+                            class="link-to-prism">src/app/modules/booking/services/booking.service.ts:11</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>getBookingById method</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -404,8 +396,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">src/app/modules/booking/services/booking.service.ts:37</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">src/app/modules/booking/services/booking.service.ts:17</a></div>
                 </td>
             </tr>
 
@@ -479,34 +471,14 @@ import { Booking, BookingDetails } from &quot;../models/booking&quot;;
  */
 export interface BookingService
 {
-    /**
-     * getAllBookings method declaration with return type of Booking[] Observable 
-     */
     getAllBookings(): Observable&lt;Booking[]&gt;;
-
-    /**
-     * getBookingById method 
-     * @param {number} id 
-     */
 
     getBookingById(id: number): Observable&lt;Booking&gt;;
 
-    /**
-     * addBooking method
-     * @param {BookingDetails} booking 
-     */
     addBooking(booking: BookingDetails): Observable&lt;Booking&gt;;
-
-    /**
-     * cancelBooking method
-     * @param {number} id 
-     */
+   
     cancelBooking(id: number): Observable&lt;void&gt;;
-    /**
-     * 
-     * @param {BookingDetails} booking 
-     * @param {number} id 
-     */
+   
     updateBooking(booking:BookingDetails,id:number): Observable&lt;Booking&gt;;
 }</code></pre>
     </div>
